@@ -1,7 +1,7 @@
 const Input = ({ label, placeholder }) => {
   return (
-    <div className="INPUT-BOX flex flex-col py-5">
-      <label htmlFor="search-input" className="text-sm px-1">
+    <div className="INPUT-BOX flex flex-col">
+      <label htmlFor="search-input" className="text-sm px-1 pb-1">
         Destination
       </label>
       <input
