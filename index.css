@@ -24,9 +24,7 @@ body {
   border-radius: 8px;
 
 }
-.ant-picker:hover{
-  border-color: black;
-}
+
 .ant-picker .ant-picker-input input::placeholder,
 .ant-picker .ant-picker-range-separator span,
 .ant-picker .ant-picker-suffix span  {
