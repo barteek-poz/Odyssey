@@ -1,10 +1,16 @@
+import { useState } from "react";
+
 const Input = ({ label, placeholder }) => {
+  const [value, setValue] = useState();
+  
   return (
     <div className="INPUT-BOX flex flex-col">
       <label htmlFor="search-input" className="text-sm px-1 pb-1">
         Destination
       </label>
       <input
+        value={value}
+        onChange={(e) => setValue(e.target.value)}
         type="text"
         id="search-input"
         placeholder="Type your destination"
