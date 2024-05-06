@@ -1,10 +1,10 @@
 const TravelSmall = ({ img, location, date }) => {
   return (
-    <div className="TRAVEL-AVATAR-SMALL">
-      <div className="sm:w-44 sm:h-32">
+    <div className="TRAVEL-SMALL">
+      <div className="TRAVEL-IMG-SMALL sm:w-44 sm:h-32">
         <img src={img} alt="city-photo" className="w-full h-full rounded-lg" />
       </div>
-      <div>
+      <div className="TRAVEL-INFO-SMALL">
         <h3 className="text-lg">{location}</h3>
         <span>{date}</span>
       </div>
