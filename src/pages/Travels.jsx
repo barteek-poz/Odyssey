@@ -1,10 +1,27 @@
 import Map from "../components/Map";
 import Navigation from "../components/Navigation";
 import TravelBig from "../components/TravelBig";
-import paris from "../assets/paris.jpg";
-import rome from "../assets/rome.jpg";
+
+import { collection, getDocs } from "firebase/firestore";
+import { db } from "../config/firestore";
+import { useEffect, useState } from "react";
 
 const Travels = () => {
+  const [travels, setTravels] = useState([]);
+  const getTravels = async () => {
+    const querySnapshot = await getDocs(collection(db, "travels"));
+    const travelsList = querySnapshot.docs.map((doc) => ({
+      id: doc.id,
+      ...doc.data(),
+    }));
+    console.log(travelsList);
+    setTravels(travelsList);
+  };
+
+  useEffect(() => {
+    getTravels();
+    
+  }, []);
   return (
     <section className="TRAVELS w-full h-full">
       <Navigation />
@@ -13,30 +30,18 @@ const Travels = () => {
       </div>
       <h1 className="sm:text-xl uppercase p-8 ml-8">Your travels</h1>
       <div className="TRAVELS-LIST mx-16 flex flex-wrap justify-between gap-8 ">
-        <TravelBig
-          img={paris}
-          location="Paris"
-          date="01/05/24 - 04/05/24"
-          from="Warsaw"
-          to="Warsaw"
-          accomodation="Paris Hotel"
+        {travels.map(travel => {
+          return  <TravelBig
+          key={travel.id}
+          img={travel.img}
+          location={travel.location}
+          date={travel.date}
+          from={travel.transport.to.cityDeparture}
+          to={travel.transport.from.cityArrival}
+          accomodation={travel.accomodation.place}
         />
-        <TravelBig
-          img={rome}
-          location="Rome"
-          date="01/05/24 - 04/05/24"
-          from="Cracow"
-          to="Cracow"
-          accomodation="Rome Hotel"
-        />
-        <TravelBig
-          img={paris}
-          location="Paris"
-          date="01/05/24 - 04/05/24"
-          from="Warsaw"
-          to="Warsaw"
-          accomodation="Paris Hotel"
-        />
+        })}
+        
       </div>
     </section>
   );
