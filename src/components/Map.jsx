@@ -1,6 +1,17 @@
 import "leaflet/dist/leaflet.css";
+import { useContext } from "react";
 import { MapContainer, TileLayer, Marker, Popup, useMap } from "react-leaflet";
+import { SearchLocationContext } from "../context/SearchLocationContext";
+import CenterMap from "./CenterMap";
+import pinIconSvg from "../assets/pin.svg";
+import { Icon } from "leaflet";
 const Map = () => {
+  const ctx = useContext(SearchLocationContext);
+  const pinIcon = new Icon({
+    iconUrl: pinIconSvg,
+    iconSize: [75, 75],
+    iconAnchor: [50,75]
+  });
   return (
     <div className="MAP-CONTAINER w-full h-full">
       <MapContainer center={[52.406376, 16.925167]} zoom={5}>
@@ -13,6 +24,11 @@ const Map = () => {
             import.meta.env.VITE_MAPBOX_TOKEN
           }`}
         />
+        {ctx.location && <Marker
+          key={ctx.location.id}
+          position={[ctx.location.lat, ctx.location.lon]}
+          icon={pinIcon}></Marker>}
+        <CenterMap locationPosition={ctx.location} />
       </MapContainer>
     </div>
   );
