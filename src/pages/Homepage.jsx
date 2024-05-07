@@ -1,12 +1,10 @@
 import LOGO from "../assets/logo.svg";
-import Button from "../components/Button";
-import DatePickerComponent from "../components/DatePicker";
-import Input from "../components/Input";
 import TravelSmall from "../components/TravelSmall";
 import paris from "../assets/paris.jpg";
 import rome from "../assets/rome.jpg";
 import ButtonRound from "../components/ButtonRound";
 import Map from "../components/Map";
+import HomepageForm from "../components/HomepageForm";
 const Homepage = () => {
   return (
     <section className="HOMEPAGE w-full h-full flex">
@@ -14,17 +12,7 @@ const Homepage = () => {
         <header className="HEADER">
           <img className="xl:w-32" src={LOGO} alt="odyssey-logo" />
         </header>
-        <form action="POST" className="ADD-FORM flex flex-col gap-4 mt-16">
-          <h1 className="xl:text-xl uppercase">Plan your next adventure</h1>
-          <Input label="Destination" placeholder="Type your destination" />
-          <div className="INPUT-BOX flex flex-col mb-3">
-            <label htmlFor="date-input" className="text-sm px-1">
-              Date
-            </label>
-            <DatePickerComponent />
-          </div>
-          <Button text="Create" />
-        </form>
+        <HomepageForm />
         <section className="TRAVELS-SECTION mt-16">
           <h2 className="xl:text-lg uppercase mt-10 mb-5">
             Your recent travels
@@ -47,7 +35,9 @@ const Homepage = () => {
                 date="23/07/24 - 02/08/24"
               />
             </div>
-            <ButtonRound />
+            <div className="flex flex-col items-center gap-1 ml-4">
+              <ButtonRound /> <span>View all your travels</span>
+            </div>
           </div>
         </section>
       </div>
