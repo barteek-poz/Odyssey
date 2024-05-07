@@ -1,5 +1,5 @@
 import airplaneIcon from "../assets/airplane.svg";
-import ButtonRound from "../components/ButtonRound";
+import ButtonRoundSmall from "./ButtonRoundSmall";
 const TravelBig = ({
   img,
   location,
@@ -28,7 +28,7 @@ const TravelBig = ({
         <p>Accomodation: {accomodation}</p>
         <div className="flex">
           <a href="home">
-            <ButtonRound size={6} />
+            <ButtonRoundSmall />
           </a>
           <span className="ml-4">More details...</span>
         </div>

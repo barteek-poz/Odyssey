@@ -1,9 +1,9 @@
 import arrowCircle from "../assets/arrow-circle.svg";
-const ButtonRound = ({ size }) => {
+const ButtonRound = () => {
   return (
     <button
-      className={`BUTTON-ROUND w-${size} h-${size} hover:translate-x-3 duration-300`}>
-      <img src={arrowCircle} alt="arrow-circle-icon" className={`w-${size} h-${size}`} />
+      className={`BUTTON-ROUND hover:translate-x-3 duration-300`}>
+      <img src={arrowCircle} alt="arrow-circle-icon" className={`sm:w-8 sm:h-8`} />
     </button>
   );
 };
