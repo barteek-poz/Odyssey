@@ -5,23 +5,11 @@ import TravelBig from "../components/TravelBig";
 import { collection, getDocs } from "firebase/firestore";
 import { db } from "../config/firestore";
 import { useEffect, useState } from "react";
+import {useLoaderData} from 'react-router-dom'
 
 const Travels = () => {
-  const [travels, setTravels] = useState([]);
-  const getTravels = async () => {
-    const querySnapshot = await getDocs(collection(db, "travels"));
-    const travelsList = querySnapshot.docs.map((doc) => ({
-      id: doc.id,
-      ...doc.data(),
-    }));
-    console.log(travelsList);
-    setTravels(travelsList);
-  };
-
-  useEffect(() => {
-    getTravels();
-    
-  }, []);
+  const loaderTravels = useLoaderData()
+  
   return (
     <section className="TRAVELS w-full h-full">
       <Navigation />
@@ -30,7 +18,7 @@ const Travels = () => {
       </div>
       <h1 className="sm:text-xl uppercase p-8 ml-8">Your travels</h1>
       <div className="TRAVELS-LIST mx-16 flex flex-wrap justify-between gap-8 ">
-        {travels.map(travel => {
+        {loaderTravels?.map(travel => {
           return  <TravelBig
           key={travel.id}
           img={travel.img}

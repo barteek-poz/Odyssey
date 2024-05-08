@@ -1,11 +1,11 @@
 import LOGO from "../assets/logo.svg";
 import TravelSmall from "../components/TravelSmall";
-import paris from "../assets/paris.jpg";
-import rome from "../assets/rome.jpg";
 import ButtonRound from "../components/ButtonRound";
 import Map from "../components/Map";
 import HomepageForm from "../components/HomepageForm";
+import { Link, useLoaderData } from "react-router-dom";
 const Homepage = () => {
+  const loaderTravels = useLoaderData();
   return (
     <section className="HOMEPAGE w-full h-full flex">
       <div className="SEARCH-CONTAINER xl:w-1/2 px-10 py-5">
@@ -19,25 +19,22 @@ const Homepage = () => {
           </h2>
           <div className="flex items-center">
             <div className="TRAVELS-BOX flex items-center gap-14">
-              <TravelSmall
-                img={paris}
-                location="Paris"
-                date="01/05/24 - 04/05/24"
-              />
-              <TravelSmall
-                img={rome}
-                location="Rome"
-                date="23/07/24 - 02/08/24"
-              />
-              <TravelSmall
-                img={rome}
-                location="Rome"
-                date="23/07/24 - 02/08/24"
-              />
+              {loaderTravels?.map((travel) => {
+                return (
+                  <TravelSmall
+                    key={travel.id}
+                    img={travel.img}
+                    location={travel.location}
+                    date={travel.date}
+                  />
+                );
+              })}
             </div>
-            <div className="flex flex-col items-center gap-1 ml-4">
+            <Link
+              to="/travels"
+              className="flex flex-col items-center gap-1 ml-4">
               <ButtonRound /> <span>View all your travels</span>
-            </div>
+            </Link>
           </div>
         </section>
       </div>

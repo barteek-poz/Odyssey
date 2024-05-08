@@ -1,4 +1,5 @@
 import airplaneIcon from "../assets/airplane.svg";
+import { dateFormat } from "../helpers/dateFormat";
 import ButtonRoundSmall from "./ButtonRoundSmall";
 const TravelBig = ({
   img,
@@ -9,6 +10,7 @@ const TravelBig = ({
   transport,
   accomodation,
 }) => {
+  const travelDate = dateFormat(date)
   return (
     <div className="TRAVEL-BIG flex">
       <div className="TRAVEL-IMG-BIG sm:w-80 sm:h-44 rounded-lg overflow-hidden">
@@ -16,7 +18,7 @@ const TravelBig = ({
       </div>
       <div className="TRAVEL-INFO p-2 pl-4 flex flex-col gap-2">
         <h2 className="font-bold uppercase sm:text-lg">{location}</h2>
-        <p>{date}</p>
+        <p>{travelDate}</p>
         <div className="TRANSPORT-INFO flex">
           Transport:
           <p className="px-1">{from}</p>
