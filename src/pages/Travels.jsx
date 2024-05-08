@@ -14,7 +14,7 @@ const Travels = () => {
     <section className="TRAVELS w-full h-full">
       <Navigation />
       <div className="MAP-CONTAINER w-full h-96">
-        <Map />
+        <Map travels={loaderTravels}/>
       </div>
       <h1 className="sm:text-xl uppercase p-8 ml-8">Your travels</h1>
       <div className="TRAVELS-LIST mx-16 flex flex-wrap justify-between gap-8 ">

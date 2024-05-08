@@ -33,13 +33,14 @@ const Homepage = () => {
             <Link
               to="/travels"
               className="flex flex-col items-center gap-1 ml-4">
-              <ButtonRound /> <span>View all your travels</span>
+              <ButtonRound />{" "}
+              <span className="text-center">View all your travels</span>
             </Link>
           </div>
         </section>
       </div>
       <div className="MAP-CONTAINER xl:w-1/2">
-        <Map />
+        <Map travels={loaderTravels} />
       </div>
     </section>
   );
