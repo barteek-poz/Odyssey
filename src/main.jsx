@@ -6,6 +6,7 @@ import Homepage from "./pages/Homepage.jsx";
 import Travels from "./pages/Travels.jsx";
 import { SearchLocationProvider } from "./context/SearchLocationContext.jsx";
 import { travelsLoader } from "./loaders/travelsLoader.js";
+import TravelDetails from "./pages/TravelDetails.jsx";
 
 const router = createBrowserRouter([
   { path: "/", element: <Homepage />, loader: travelsLoader },
@@ -14,6 +15,10 @@ const router = createBrowserRouter([
     element: <Travels />,
     loader: travelsLoader,
   },
+  {
+    path: '/id',
+    element: <TravelDetails/>
+  }
 ]);
 
 ReactDOM.createRoot(document.getElementById("root")).render(
