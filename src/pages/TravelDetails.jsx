@@ -2,6 +2,7 @@ import AccomodationDetails from "../components/AccomodationDetails";
 import DatePickerComponent from "../components/DatePicker";
 import Map from "../components/Map";
 import Navigation from "../components/Navigation";
+import Schedule from "../components/Schedule";
 import TransportDetails from "../components/TransportDetails";
 
 const TravelDetails = () => {
@@ -23,6 +24,7 @@ const TravelDetails = () => {
             <DatePickerComponent />
           </div>
           <AccomodationDetails />
+          <Schedule />
         </div>
         <div className="RIGHT-COLUMN w-1/2 border py-10 px-16 flex flex-col gap-8">
           <TransportDetails />
