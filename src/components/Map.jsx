@@ -7,7 +7,6 @@ import pinIconSvg from "../assets/pin.svg";
 import { Icon } from "leaflet";
 import { dateFormat } from "../helpers/dateFormat";
 const Map = ({ travels }) => {
-  console.log(travels);
   const ctx = useContext(SearchLocationContext);
   const pinIcon = new Icon({
     iconUrl: pinIconSvg,
