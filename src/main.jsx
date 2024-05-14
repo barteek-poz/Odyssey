@@ -5,20 +5,24 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Homepage from "./pages/Homepage.jsx";
 import Travels from "./pages/Travels.jsx";
 import { SearchLocationProvider } from "./context/SearchLocationContext.jsx";
-import { travelsLoader } from "./loaders/travelsLoader.js";
+import { allTravelsLoader} from "./loaders/allTravelsLoader.js";
 import TravelDetails from "./pages/TravelDetails.jsx";
+import { singleTravelLoader } from "./loaders/singleTravelLoader.js";
 
 const router = createBrowserRouter([
-  { path: "/", element: <Homepage />, loader: travelsLoader },
+  { path: "/", element: <Homepage />, loader: allTravelsLoader },
   {
     path: "/travels",
     element: <Travels />,
-    loader: travelsLoader,
+    loader: allTravelsLoader,
   },
   {
-    path: '/id',
-    element: <TravelDetails/>
-  }
+    path: "/travels/:id",
+    element: <TravelDetails />,
+    loader: ({params})=> {
+      return singleTravelLoader(params)
+    } ,
+  },
 ]);
 
 ReactDOM.createRoot(document.getElementById("root")).render(

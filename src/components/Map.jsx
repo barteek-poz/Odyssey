@@ -6,7 +6,7 @@ import CenterMap from "./CenterMap";
 import pinIconSvg from "../assets/pin.svg";
 import { Icon } from "leaflet";
 import { dateFormat } from "../helpers/dateFormat";
-const Map = ({ travels }) => {
+const Map = ({ allTravels, singleTravelLocation }) => {
   const ctx = useContext(SearchLocationContext);
   const pinIcon = new Icon({
     iconUrl: pinIconSvg,
@@ -15,7 +15,7 @@ const Map = ({ travels }) => {
   });
   return (
     <div className="MAP-CONTAINER w-full h-full">
-      <MapContainer center={[52.406376, 16.925167]} zoom={5}>
+      <MapContainer center={singleTravelLocation ? [singleTravelLocation._lat, singleTravelLocation._long] : [52.406376, 16.925167]} zoom={singleTravelLocation ? 10 : 5}>
         <TileLayer
           attribution='&copy; <a href="https://www.mapbox.com/about/maps/">Mapbox</a> ©
       <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>
@@ -31,8 +31,8 @@ const Map = ({ travels }) => {
             position={[ctx.location.lat, ctx.location.lon]}
             icon={pinIcon}></Marker>
         )}
-        {travels &&
-          travels.map((travel) => {
+        {allTravels &&
+          allTravels.map((travel) => {
             return (
               <Marker
                 key={travel.id}

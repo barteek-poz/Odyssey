@@ -40,7 +40,7 @@ const Homepage = () => {
         </section>
       </div>
       <div className="MAP-CONTAINER xl:w-1/2">
-        <Map travels={loaderTravels} />
+        <Map allTravels={loaderTravels} />
       </div>
     </section>
   );
