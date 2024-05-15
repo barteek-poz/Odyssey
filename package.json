@@ -11,7 +11,9 @@
   },
   "dependencies": {
     "antd": "^5.16.5",
+    "dayjs": "^1.11.11",
     "firebase": "^10.11.1",
+    "instead": "^1.0.3",
     "leaflet": "^1.9.4",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
