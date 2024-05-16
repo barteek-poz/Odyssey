@@ -1,7 +1,6 @@
 import Button from "./Button";
-import DatePickerComponent from "./DatePicker";
+import DatePickerComponent from "./DatePickerComponent";
 import SearchInput from "./SearchInput";
-
 
 const HomepageForm = () => {
   return (

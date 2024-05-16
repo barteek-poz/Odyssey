@@ -1,6 +1,6 @@
 import { useLoaderData } from "react-router-dom";
 import AccomodationDetails from "../components/AccomodationDetails";
-import DatePickerComponent from "../components/DatePicker";
+import DatePickerComponent from "../components/DatePickerComponent";
 import Map from "../components/Map";
 import Navigation from "../components/Navigation";
 import Schedule from "../components/Schedule";
@@ -8,7 +8,6 @@ import TransportDetails from "../components/TransportDetails";
 
 const TravelDetails = () => {
   const loaderData = useLoaderData()
-  console.log(loaderData);
   return (
     <section className="TRAVEL-DETAILS w-full h-full">
       <Navigation />
@@ -23,7 +22,7 @@ const TravelDetails = () => {
           </div>
           <div className="flex items-center gap-4 uppercase">
             <h2 className="underline uppercase">Date:</h2>
-            <DatePickerComponent date={loaderData.date} />
+            <DatePickerComponent />
           </div>
           <AccomodationDetails />
           <Schedule />
