@@ -1,10 +1,6 @@
 import Map from "../components/Map";
 import Navigation from "../components/Navigation";
 import TravelBig from "../components/TravelBig";
-
-import { collection, getDocs } from "firebase/firestore";
-import { db } from "../config/firestore";
-import { useEffect, useState } from "react";
 import {useLoaderData} from 'react-router-dom'
 
 const Travels = () => {
@@ -21,6 +17,7 @@ const Travels = () => {
         {loaderTravels?.map(travel => {
           return  <TravelBig
           key={travel.id}
+          id={travel.id}
           img={travel.img}
           location={travel.location}
           date={travel.date}
