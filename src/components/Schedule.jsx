@@ -6,9 +6,8 @@ const Schedule = () => {
     {
       id: 1,
       text: "Visit Operahouse",
-      done: false,
     },
-    { id: 2, text: "Eat brunost", done: false },
+    { id: 2, text: "Eat brunost" },
   ]);
   const [isNewTask, setIsNewTask] = useState(false);
   const addTask = () => {
@@ -18,7 +17,7 @@ const Schedule = () => {
     setIsNewTask(true);
   };
 
-  const deleteTaskHandler = (id) => {
+  const deleteTask = (id) => {
     const activeTasks = schedule.filter((task) => task.id !== id);
     setSchedule(activeTasks);
   };
@@ -51,8 +50,7 @@ const Schedule = () => {
               <ScheduleInput
                 id={task.id}
                 task={task.text}
-                done={task.done}
-                deleteTask={deleteTaskHandler}
+                deleteTask={deleteTask}
                 emptyTaskValidation={emptyTaskValidation}
               />
             </li>
@@ -61,7 +59,7 @@ const Schedule = () => {
       </ul>
 
       <button
-        className="ADD-BUTTON transform py-0.5 duration-100 hover:border-b"
+        className="ADD-BUTTON transform py-0.5 duration-100 hover:border-b hover:border-b-black"
         onClick={addTask}>
         + Add event
       </button>

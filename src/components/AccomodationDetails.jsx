@@ -3,9 +3,8 @@ import DetailsInput from "./DetailsInput";
 
 const AccomodationDetails = () => {
   const loaderData = useLoaderData();
-  console.log(loaderData);
   return (
-    <div className="ACCOMODATION FORM flex flex-col gap-4">
+    <div className="ACCOMODATION FORM flex flex-col gap-4 ">
       <span className="uppercase underline">Accomodation</span>
       <DetailsInput
         label="Place"
