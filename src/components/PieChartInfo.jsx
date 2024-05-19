@@ -9,7 +9,6 @@ const PieChartInfo = () => {
     souvenirsExpenses,
     accomodationExpenses,
   } = calcExpenses(expenses);
-  console.log(expenses);
   return (
     <div className="CHART-INFO flex flex-col">
       <span className="uppercase underline">Expenses</span>

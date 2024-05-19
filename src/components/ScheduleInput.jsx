@@ -31,8 +31,8 @@ const ScheduleInput = ({ task, id, done, deleteTaskHandler, emptyTaskValidation 
         className="hidden cursor-pointer duration-300 hover:scale-110 group-hover:block"
       />
       <img
-        onClick={() => {
-          deleteTaskHandler(id);
+        onClick={()=> {
+          deleteTaskHandler(id)
         }}
         src={deleteIcon}
         alt="delete-icon"
