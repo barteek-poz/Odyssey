@@ -1,5 +1,5 @@
 import Button from "./Button";
-import DatePickerComponent from "./DatePickerComponent";
+import HomepageDatePicker from "./HomepageDatePicker";
 import SearchInput from "./SearchInput";
 
 const HomepageForm = () => {
@@ -11,7 +11,7 @@ const HomepageForm = () => {
         <label htmlFor="date-input" className="text-sm px-1">
           Date
         </label>
-        <DatePickerComponent />
+        <HomepageDatePicker/>
       </div>
       <Button text="Create" />
     </form>

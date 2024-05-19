@@ -17,6 +17,9 @@ const PieChart = () => {
       legend: {
         position: "right",
         align: "middle",
+        onClick: (e) => {
+          e.stopPropagation();
+        },
         labels: {
           boxWidth: 16,
           boxHeight: 16,

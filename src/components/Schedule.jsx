@@ -1,15 +1,10 @@
 import { useEffect, useState } from "react";
 import ScheduleInput from "./ScheduleInput";
+import { useLoaderData } from "react-router-dom";
 
 const Schedule = () => {
-  const [schedule, setSchedule] = useState([
-    {
-      id: 1,
-      text: "Visit Operahouse",
-    },
-    { id: 2, text: "Eat brunost" },
-  ]);
   const [isNewTask, setIsNewTask] = useState(false);
+  const {schedule} = useLoaderData();
   const addTask = () => {
     setSchedule((prevState) => {
       return [...prevState, { id: Date.now(), text: "" }];
@@ -17,7 +12,7 @@ const Schedule = () => {
     setIsNewTask(true);
   };
 
-  const deleteTask = (id) => {
+  const deleteTaskHandler = (id) => {
     const activeTasks = schedule.filter((task) => task.id !== id);
     setSchedule(activeTasks);
   };
@@ -50,7 +45,7 @@ const Schedule = () => {
               <ScheduleInput
                 id={task.id}
                 task={task.text}
-                deleteTask={deleteTask}
+                deleteTaskHandler={deleteTaskHandler}
                 emptyTaskValidation={emptyTaskValidation}
               />
             </li>
