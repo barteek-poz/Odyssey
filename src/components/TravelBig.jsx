@@ -1,18 +1,21 @@
 import airplaneIcon from "../assets/airplane.svg";
 import { dateFormat } from "../helpers/dateFormat";
 import ButtonRoundSmall from "./ButtonRoundSmall";
+import { Link } from "react-router-dom";
+
 const TravelBig = ({
   img,
   location,
   date,
   from,
   to,
+  id,
   transport,
   accomodation,
 }) => {
   const travelDate = dateFormat(date);
   return (
-    <div className="TRAVEL-BIG flex">
+    <Link to={`/travels/${id}`} className="TRAVEL-BIG flex">
       <div className="TRAVEL-IMG-BIG sm:w-80 sm:h-44 rounded-lg overflow-hidden duration-300 hover:scale-105">
         <img src={img} alt="city-photo" className="w-full h-full" />
       </div>
@@ -28,14 +31,16 @@ const TravelBig = ({
           {to}
         </div>
         <p>Accomodation: {accomodation}</p>
-        <div className="flex">
+        <div className="flex group">
           <a href="home">
             <ButtonRoundSmall />
           </a>
-          <span className="ml-4">More details...</span>
+          <p className="ml-4 h-6 duration-300 group-hover:border-b group-hover:border-b-black">
+            More details...
+          </p>
         </div>
       </div>
-    </div>
+    </Link>
   );
 };
 

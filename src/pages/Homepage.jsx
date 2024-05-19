@@ -6,6 +6,7 @@ import HomepageForm from "../components/HomepageForm";
 import { Link, useLoaderData } from "react-router-dom";
 const Homepage = () => {
   const loaderTravels = useLoaderData();
+  console.log(loaderTravels);
   return (
     <section className="HOMEPAGE w-full h-full flex">
       <div className="SEARCH-CONTAINER xl:w-1/2 px-10 py-5">
@@ -26,15 +27,18 @@ const Homepage = () => {
                     img={travel.img}
                     location={travel.location}
                     date={travel.date}
+                    id={travel.id}
                   />
                 );
               })}
             </div>
             <Link
               to="/travels"
-              className="flex flex-col items-center gap-1 ml-4">
+              className="flex flex-col items-center gap-1 ml-4 group">
               <ButtonRound />{" "}
-              <span className="text-center">View all your travels</span>
+              <span className="text-center duration-300 group-hover:border-b group-hover:border-b-black">
+                View all your travels
+              </span>
             </Link>
           </div>
         </section>
