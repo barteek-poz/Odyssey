@@ -1,6 +1,7 @@
 export const dateFormat = (date) => {
-  const firstDate = date.slice(0, 10).replaceAll("-", "/");
-  const secondDate = date.slice(12).trim().replaceAll("-", "/");
-  const formatedDate = `${firstDate} - ${secondDate}`;
+  const dates = date.map((singleDate) =>
+    singleDate.slice(0, 10).replaceAll("-", "/")
+  );
+  const formatedDate = `${dates[0]} - ${dates[1]}`;
   return formatedDate;
 };

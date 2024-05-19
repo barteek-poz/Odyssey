@@ -1,12 +1,14 @@
 import "leaflet/dist/leaflet.css";
 import { useContext } from "react";
-import { MapContainer, TileLayer, Marker, Popup, useMap } from "react-leaflet";
+import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
 import { SearchLocationContext } from "../context/SearchLocationContext";
 import CenterMap from "./CenterMap";
 import pinIconSvg from "../assets/pin.svg";
 import { Icon } from "leaflet";
 import { dateFormat } from "../helpers/dateFormat";
+
 const Map = ({ allTravels, singleTravelLocation }) => {
+  console.log(allTravels);
   const ctx = useContext(SearchLocationContext);
   const pinIcon = new Icon({
     iconUrl: pinIconSvg,

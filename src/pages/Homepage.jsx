@@ -6,7 +6,7 @@ import HomepageForm from "../components/HomepageForm";
 import { Link, useLoaderData } from "react-router-dom";
 const Homepage = () => {
   const loaderTravels = useLoaderData();
-  console.log(loaderTravels);
+  
   return (
     <section className="HOMEPAGE w-full h-full flex">
       <div className="SEARCH-CONTAINER xl:w-1/2 px-10 py-5">
