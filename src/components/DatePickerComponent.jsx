@@ -4,8 +4,7 @@ import { useLoaderData } from "react-router-dom";
 const { RangePicker } = DatePicker;
 
 const DatePickerComponent = () => {
-  const loaderData = useLoaderData();
-  console.log(loaderData);
+  const loaderData = useLoaderData()
   const firstDate = loaderData?.date[0].slice(0, 10);
   const secondDate = loaderData?.date[1].slice(0,10);
   const onCalendarChange = (dates, dateStrings) => {
