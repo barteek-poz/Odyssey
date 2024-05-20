@@ -11,7 +11,7 @@ const TransportForm = ({
   return (
     <div className="flex flex-col gap-4">
       <SelectBar
-        initialValue={transportType}
+        initialValue={transportType ? transportType : 'Select your form of transport'}
         placeholder="Select your form of transport"
         options={[
           { value: "plane", label: "Plane" },

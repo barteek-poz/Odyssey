@@ -13,7 +13,7 @@ const DetailsInput = ({ label, placeholder, initialValue }) => {
         onChange={(e) => {
           setValue(e.target.value);
         }}
-        value={value}
+        value={value ? value : placeholder}
         className="outline-outlineColor min-w-64 rounded-lg px-1 outline-1 text-black placeholder-black"
         placeholder={placeholder}
       />

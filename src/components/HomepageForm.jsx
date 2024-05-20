@@ -1,18 +1,18 @@
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import Button from "./Button";
 import HomepageDatePicker from "./HomepageDatePicker";
 import SearchInput from "./SearchInput";
 import { collection, addDoc } from "firebase/firestore";
 import { db } from "../config/firestore";
-import { Form } from "react-router-dom";
+import { Form, redirect, useLoaderData, useNavigate } from "react-router-dom";
 import { SearchLocationContext } from "../context/SearchLocationContext";
 
 const HomepageForm = () => {
   const [travelDate, setTravelDate] = useState(undefined);
   const ctx = useContext(SearchLocationContext);
-
-  const addTravelHandler = async (args) => {
-    const newTravel = {
+  const navigate = useNavigate();
+  const addTravelHandler = async () => {
+    const newTravelData = {
       location: ctx.location.name,
       date: travelDate,
       geolocation: {
@@ -21,16 +21,22 @@ const HomepageForm = () => {
       },
     };
     try {
-      await addDoc(collection(db, "travels"), {
-        ...newTravel,
+      const newTravel = await addDoc(collection(db, "travels"), {
+        ...newTravelData,
       });
-     
+      navigate(`/travels/${newTravel.id}`);
     } catch (error) {
       console.log(error);
     }
   };
+
   return (
-    <div className="ADD-FORM flex flex-col gap-4 mt-16">
+    <form
+      onSubmit={(event) => {
+        event.preventDefault();
+        addTravelHandler();
+      }}
+      className="ADD-FORM flex flex-col gap-4 mt-16">
       <h1 className="xl:text-xl uppercase">Plan your next adventure</h1>
       <SearchInput label="Destination" placeholder="Type your destination" />
       <div className="INPUT-BOX flex flex-col mb-3">
@@ -39,8 +45,8 @@ const HomepageForm = () => {
         </label>
         <HomepageDatePicker setTravelDate={setTravelDate} />
       </div>
-      <Button onClick={addTravelHandler} text="Create" />
-    </div>
+      <Button text="Create" />
+    </form>
   );
 };
 

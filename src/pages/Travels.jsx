@@ -21,9 +21,9 @@ const Travels = () => {
           img={travel.img}
           location={travel.location}
           date={travel.date}
-          from={travel.transport.to.cityDeparture}
-          to={travel.transport.from.cityArrival}
-          accomodation={travel.accomodation.place}
+          from={travel.transport?.to.cityDeparture}
+          to={travel.transport?.from.cityArrival}
+          accomodation={travel.accomodation?.place}
         />
         })}
         
