@@ -6,8 +6,8 @@ const { RangePicker } = DatePicker;
 const DatePickerComponent = () => {
   const loaderData = useLoaderData();
   console.log(loaderData);
-  const firstDate = loaderData?.date.slice(0, 10);
-  const secondDate = loaderData?.date.slice(12).trim();
+  const firstDate = loaderData?.date[0].slice(0, 10);
+  const secondDate = loaderData?.date[1].slice(0,10);
   const onCalendarChange = (dates, dateStrings) => {
     console.log(dates);
     console.log(dateStrings);

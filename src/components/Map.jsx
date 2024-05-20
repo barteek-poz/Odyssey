@@ -8,7 +8,6 @@ import { Icon } from "leaflet";
 import { dateFormat } from "../helpers/dateFormat";
 
 const Map = ({ allTravels, singleTravelLocation }) => {
-  console.log(allTravels);
   const ctx = useContext(SearchLocationContext);
   const pinIcon = new Icon({
     iconUrl: pinIconSvg,

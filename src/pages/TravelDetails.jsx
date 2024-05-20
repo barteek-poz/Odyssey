@@ -27,7 +27,7 @@ const TravelDetails = () => {
                 <span className="pl-4">{loaderData.location}</span>
               </div>
               <div className="flex items-center gap-4 uppercase">
-                <h2 className="underline uppercase">Date:</h2>
+                <span className="underline uppercase">Date:</span>
                 <DatePickerComponent />
               </div>
               <AccomodationDetails />

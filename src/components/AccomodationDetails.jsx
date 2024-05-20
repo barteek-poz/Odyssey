@@ -9,32 +9,32 @@ const AccomodationDetails = () => {
       <DetailsInput
         label="Place"
         placeholder="Enter your accomodation place"
-        initialValue={loaderData.accomodation.place}
+        initialValue={loaderData.accomodation?.place}
       />
       <DetailsInput
         label="Reservation number"
         placeholder="Enter your reservation number"
-        initialValue={loaderData.accomodation.reservationNumber}
+        initialValue={loaderData.accomodation?.reservationNumber}
       />
       <DetailsInput
         label="Room"
         placeholder="Enter your room type"
-        initialValue={loaderData.accomodation.room}
+        initialValue={loaderData.accomodation?.room}
       />
       <DetailsInput
         label="Check-in"
         placeholder="Enter your check-in time"
-        initialValue={loaderData.accomodation.checkIn}
+        initialValue={loaderData.accomodation?.checkIn}
       />
       <DetailsInput
         label="Email"
         placeholder="Email adress to your accomodation"
-        initialValue={loaderData.accomodation.email}
+        initialValue={loaderData.accomodation?.email}
       />
       <DetailsInput
         label="Phone"
         placeholder="Phone number to your accomodation"
-        initialValue={loaderData.accomodation.phone}
+        initialValue={loaderData.accomodation?.phone}
       />
     </div>
   );
