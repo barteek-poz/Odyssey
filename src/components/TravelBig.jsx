@@ -15,10 +15,12 @@ const TravelBig = ({
 }) => {
   const travelDate = dateFormat(date);
   return (
-    <Link to={`/travels/${id}`} className="TRAVEL-BIG flex">
-      <div className="TRAVEL-IMG-BIG sm:w-80 sm:h-44 rounded-lg overflow-hidden duration-300 hover:scale-105">
+    <div className="TRAVEL-BIG flex">
+      <Link
+        to={`/travels/${id}`}
+        className="TRAVEL-IMG-BIG sm:w-80 sm:h-44 rounded-lg overflow-hidden duration-300 hover:scale-105">
         <img src={img} alt="city-photo" className="w-full h-full" />
-      </div>
+      </Link>
       <div className="TRAVEL-INFO p-2 pl-6 flex flex-col gap-2">
         <h2 className="font-bold uppercase sm:text-lg">{location}</h2>
         <p>{travelDate}</p>
@@ -31,16 +33,16 @@ const TravelBig = ({
           {to}
         </div>
         <p>Accomodation: {accomodation}</p>
-        <div className="flex group">
-          <a href="home">
+        <Link to={`/travels/${id}`} className="flex group">
+          <div>
             <ButtonRoundSmall />
-          </a>
+          </div>
           <p className="ml-4 h-6 duration-300 group-hover:border-b group-hover:border-b-black">
             More details...
           </p>
-        </div>
+        </Link>
       </div>
-    </Link>
+    </div>
   );
 };
 

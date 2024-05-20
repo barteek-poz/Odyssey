@@ -5,7 +5,7 @@ import {useLoaderData} from 'react-router-dom'
 
 const Travels = () => {
   const loaderTravels = useLoaderData()
-  
+
   return (
     <section className="TRAVELS w-full h-full">
       <Navigation />

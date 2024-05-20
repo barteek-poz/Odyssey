@@ -6,8 +6,6 @@ import Navigation from "../components/Navigation";
 import Schedule from "../components/Schedule";
 import TransportDetails from "../components/TransportDetails";
 import CenterComponent from "../components/CenterComponent";
-import PieChart from "../components/PieChart";
-import PieChartInfo from "../components/PieChartInfo";
 import PieChartForm from "../components/PieChartForm";
 
 const TravelDetails = () => {

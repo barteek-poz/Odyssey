@@ -4,14 +4,17 @@ import HomepageDatePicker from "./HomepageDatePicker";
 import SearchInput from "./SearchInput";
 import { collection, addDoc } from "firebase/firestore";
 import { db } from "../config/firestore";
-import { Form, redirect, useLoaderData, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { SearchLocationContext } from "../context/SearchLocationContext";
+import getTravelPhoto from "../helpers/getTravelPhoto";
 
 const HomepageForm = () => {
   const [travelDate, setTravelDate] = useState(undefined);
   const ctx = useContext(SearchLocationContext);
   const navigate = useNavigate();
+
   const addTravelHandler = async () => {
+    const travelPhoto = await getTravelPhoto(ctx.location.name.toLowerCase());
     const newTravelData = {
       location: ctx.location.name,
       date: travelDate,
@@ -19,6 +22,9 @@ const HomepageForm = () => {
         _lat: ctx.location.lat,
         _long: ctx.location.lon,
       },
+      img: travelPhoto
+        ? travelPhoto.results[0].urls.regular
+        : "https://images.unsplash.com/photo-1488646953014-85cb44e25828?q=80&w=1935&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     };
     try {
       const newTravel = await addDoc(collection(db, "travels"), {
