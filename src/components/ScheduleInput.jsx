@@ -1,6 +1,8 @@
 import checkIcon from "../assets/check.svg";
 import deleteIcon from "../assets/delete.svg";
 import { useState } from "react";
+import CheckButton from "./CheckButton";
+import DeleteButton from "./DeleteButton";
 
 const ScheduleInput = ({ task, id, done, deleteTaskHandler, emptyTaskValidation }) => {
   const [scheduleTask, setScheduleTask] = useState(task);
@@ -14,7 +16,7 @@ const ScheduleInput = ({ task, id, done, deleteTaskHandler, emptyTaskValidation 
   return (
     <div className="SCHEDULE-INPUT flex gap-2 group">
       <input
-        className={taskDone ? `line-through text-placeholderColor` : ""}
+        className={ taskDone ? `line-through text-placeholderColor outline-outlineColor rounded-lg px-1` : "outline-outlineColor rounded-lg px-1"}
         type="text"
         value={scheduleTask}
         onChange={editTaskHandler}
@@ -24,20 +26,8 @@ const ScheduleInput = ({ task, id, done, deleteTaskHandler, emptyTaskValidation 
           }
         }}
       />
-      <img
-        onClick={doneTaskHandler}
-        src={checkIcon}
-        alt="check-icon"
-        className="hidden cursor-pointer duration-300 hover:scale-110 group-hover:block"
-      />
-      <img
-        onClick={()=> {
-          deleteTaskHandler(id)
-        }}
-        src={deleteIcon}
-        alt="delete-icon"
-        className="hidden cursor-pointer duration-300 hover:scale-110 group-hover:block"
-      />
+      <CheckButton onClick={doneTaskHandler} display="hidden"/>
+      <DeleteButton onClick={()=> {deleteTaskHandler(id)}} display="hidden"/>
     </div>
   );
 };

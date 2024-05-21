@@ -1,5 +1,4 @@
 import { useContext, useEffect, useState } from "react";
-import Button from "./Button";
 import HomepageDatePicker from "./HomepageDatePicker";
 import SearchInput from "./SearchInput";
 import { collection, addDoc } from "firebase/firestore";
@@ -51,7 +50,10 @@ const HomepageForm = () => {
         </label>
         <HomepageDatePicker setTravelDate={setTravelDate} />
       </div>
-      <Button text="Create" />
+      <button
+      className="BUTTON border border-black rounded-lg w-24 h-8 cursor-pointer hover:bg-black hover:text-white transition-colors duration-300">
+      Create
+    </button>
     </form>
   );
 };

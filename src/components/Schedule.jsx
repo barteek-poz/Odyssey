@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import ScheduleInput from "./ScheduleInput";
 import { useLoaderData } from "react-router-dom";
+import AddButton from "./AddButton";
 
 const Schedule = () => {
   const [isNewTask, setIsNewTask] = useState(false);
@@ -41,7 +42,7 @@ const Schedule = () => {
       <ul className="SCHEDULE-LIST flex flex-col gap-2">
         {schedule?.map((task, index) => {
           return (
-            <li key={index} className="list-disc ml-5">
+            <li key={index} className="list-disc ml-4">
               <ScheduleInput
                 id={task.id}
                 task={task.text}
@@ -53,11 +54,7 @@ const Schedule = () => {
         })}
       </ul>
 
-      <button
-        className="ADD-BUTTON transform py-0.5 duration-100 hover:border-b hover:border-b-black"
-        onClick={addTask}>
-        + Add event
-      </button>
+      <AddButton text='Add event' onClick={addTask}/>
     </div>
   );
 };
