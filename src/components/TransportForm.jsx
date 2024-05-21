@@ -13,6 +13,7 @@ const TransportForm = ({
       <SelectBar
         initialValue={transportType ? transportType : 'Select your form of transport'}
         placeholder="Select your form of transport"
+        label="Form of transport"
         options={[
           { value: "plane", label: "Plane" },
           { value: "bus", label: "Bus" },

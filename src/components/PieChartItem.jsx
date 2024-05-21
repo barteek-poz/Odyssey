@@ -8,7 +8,7 @@ const PieChartItem = ({ category, title, price }) => {
     accomodation: "bg-accomodation",
   };
   return (
-    <div className="CHART-ITEM flex items-center gap-2">
+    <div className="CHART-ITEM flex items-center gap-2 duration-300 border-b hover:bg-outlineColor hover:text-white">
       <div className={`w-4 h-4 ${colorVariants[category]}`}></div>
       <p className="text-start mr-4">
         {title[0].toUpperCase() + title.slice(1)}

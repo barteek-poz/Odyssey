@@ -38,7 +38,7 @@ const PieChart = () => {
           souvenirsExpenses,
           accomodationExpenses,
         ],
-        backgroundColor: ["#fb923c", "#10b981", "#38bdf8", "#6b21a8"],
+        backgroundColor: ["#fb923c", "#10b981", "#fb7185", "#6b21a8"],
         hoverOffset: 4,
       },
     ],
