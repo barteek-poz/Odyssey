@@ -14,9 +14,9 @@ const ScheduleInput = ({ task, id, done, deleteTaskHandler, emptyTaskValidation 
     setTaskDone((prevState) => !prevState);
   };
   return (
-    <div className="SCHEDULE-INPUT flex gap-2 group">
+    <div className="SCHEDULE-INPUT group flex gap-2 hover:bg-gray-200">
       <input
-        className={ taskDone ? `line-through text-placeholderColor outline-outlineColor rounded-lg px-1` : "outline-outlineColor rounded-lg px-1"}
+        className={ taskDone ? `line-through text-placeholderColor outline-outlineColor rounded-lg px-1 group-hover:bg-gray-200` : "outline-outlineColor rounded-lg px-1 group-hover:bg-gray-200"}
         type="text"
         value={scheduleTask}
         onChange={editTaskHandler}
@@ -26,8 +26,8 @@ const ScheduleInput = ({ task, id, done, deleteTaskHandler, emptyTaskValidation 
           }
         }}
       />
-      <CheckButton onClick={doneTaskHandler} display="hidden"/>
-      <DeleteButton onClick={()=> {deleteTaskHandler(id)}} display="hidden"/>
+      <CheckButton onClick={doneTaskHandler} display="invisible" />
+      <DeleteButton onClick={()=> {deleteTaskHandler(id)}} display="invisible" />
     </div>
   );
 };
