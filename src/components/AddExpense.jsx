@@ -1,17 +1,26 @@
 import AddButton from "./AddButton";
-import ExpenseInput from "./ExpenseInput";
 import { useState } from "react";
 import AddExpenseForm from "./AddExpenseForm";
 
-const AddExpense = () => {
+
+const AddExpense = ({ currentExpenses, setCurrentExpenses, setTotalSum }) => {
   const [formOpen, setFormOpen] = useState(false);
   const formDisplayHandler = () => {
-    setFormOpen(prevState => !prevState);
+    setFormOpen((prevState) => !prevState);
   };
   return (
     <div className="ADD-EXPENSE mb-1">
-      {!formOpen && <AddButton text="Add expense" onClick={formDisplayHandler} />}
-     {formOpen && <AddExpenseForm formDisplayHandler={formDisplayHandler}/>}
+      {!formOpen && (
+        <AddButton text="Add expense" onClick={formDisplayHandler} />
+      )}
+      {formOpen && (
+        <AddExpenseForm
+          formDisplayHandler={formDisplayHandler}
+          currentExpenses={currentExpenses}
+          setCurrentExpenses={setCurrentExpenses}
+          setTotalSum={setTotalSum}
+        />
+      )}
     </div>
   );
 };

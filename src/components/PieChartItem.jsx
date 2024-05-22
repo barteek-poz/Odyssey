@@ -1,4 +1,3 @@
-import { useState } from "react";
 import DeleteButton from "./DeleteButton";
 
 const PieChartItem = ({ category, title, price }) => {

@@ -1,4 +1,5 @@
 const calcExpenses = (expenses) => {
+  
   const foodExpenses = expenses
     .filter((expense) => expense.category === "food")
     .map((expense) => Number(expense.price))
