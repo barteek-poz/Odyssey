@@ -42,7 +42,7 @@ const Schedule = () => {
       <ul className="SCHEDULE-LIST flex flex-col gap-2">
         {schedule?.map((task, index) => {
           return (
-            <li key={index} className="list-disc ml-4">
+            <li key={index} className="list-disc ml-5">
               <ScheduleInput
                 id={task.id}
                 task={task.text}

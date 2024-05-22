@@ -26,7 +26,7 @@ const PieChartInfo = () => {
         </ul>
         <AddExpense />
       </div>
-      <span className="TOTAL ml-auto ">
+      <span className="TOTAL ml-auto">
         Total: -{" "}
         {foodExpenses +
           transportExpenses +

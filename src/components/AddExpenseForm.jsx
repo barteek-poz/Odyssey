@@ -17,7 +17,7 @@ const AddExpenseForm = ({ formDisplayHandler }) => {
       />
       <ExpenseInput placeholder="Title" />
       <ExpenseInput placeholder="Price" type="number" />
-      <CheckButton />
+      <CheckButton  />
       <DeleteButton onClick={formDisplayHandler} />
     </div>
   );

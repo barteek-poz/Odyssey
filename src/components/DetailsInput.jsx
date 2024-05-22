@@ -14,7 +14,7 @@ const DetailsInput = ({ label, placeholder, initialValue }) => {
           setValue(e.target.value);
         }}
         value={value ? value : placeholder}
-        className="outline-outlineColor min-w-64 rounded-lg px-1 outline-1 text-black placeholder-black"
+        className="outline-outlineColor min-w-52 rounded-lg px-1 outline-1 text-black placeholder-black"
         placeholder={placeholder}
       />
     </div>

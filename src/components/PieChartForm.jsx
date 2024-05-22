@@ -6,7 +6,7 @@ const PieChartForm = () => {
   const { expenses } = useLoaderData();
 
   return (
-    <div className="CHART-BOX flex justify-center gap-40">
+    <div className="CHART-BOX flex justify-center gap-40 px-20">
      {expenses ? <>
         {" "}
         <div className="CHART lg:w-600 lg:h-600">
