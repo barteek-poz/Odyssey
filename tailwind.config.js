@@ -6,10 +6,10 @@ export default {
       colors: {
         placeholderColor: "rgba(0, 0, 0, 0.5)",
         outlineColor: "#4096ff",
-        souvenirs: "#fb7185",
+        souvenirs: "#6366f1",
         food: "#fb923c",
         transport: "#10b981",
-        accomodation: "#6b21a8",
+        accomodation: "#f43f5e",
       },
       minWidth: {
         400: "400px",

@@ -30,7 +30,6 @@ const SearchInput = ({ label, placeholder }) => {
     setInputValue(value);
     searchLocationHandler(value);
   };
-  console.log(searchList);
   return (
     <div className="INPUT-BOX flex flex-col">
       <label htmlFor="search-input" className="text-sm px-1 pb-1">
