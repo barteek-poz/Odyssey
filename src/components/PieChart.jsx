@@ -1,17 +1,16 @@
 import { Chart as ChartJS, Tooltip, Legend, ArcElement } from "chart.js";
 import { Pie } from "react-chartjs-2";
-import { useLoaderData } from "react-router-dom";
 import calcExpenses from "../helpers/calcExpenses";
 
 ChartJS.register(Tooltip, Legend, ArcElement);
-const PieChart = () => {
-  const { expenses } = useLoaderData();
+const PieChart = ({currentExpenses}) => {
+ 
   const {
     foodExpenses,
     transportExpenses,
     accomodationExpenses,
     souvenirsExpenses,
-  } = calcExpenses(expenses);
+  } = calcExpenses(currentExpenses);
   const options = {
     plugins: {
       legend: {
@@ -38,7 +37,7 @@ const PieChart = () => {
           souvenirsExpenses,
           accomodationExpenses,
         ],
-        backgroundColor: ["#fb923c", "#10b981", "#fb7185", "#6b21a8"],
+        backgroundColor: ["#fb923c", "#10b981", "#6366f1", "#f43f5e"],
         hoverOffset: 4,
       },
     ],

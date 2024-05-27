@@ -3,10 +3,20 @@ import PieChartItem from "./PieChartItem";
 import calcExpenses from "../helpers/calcExpenses";
 import AddExpense from "./AddExpense";
 import { useState } from "react";
-const PieChartInfo = () => {
-  const { expenses } = useLoaderData();
-  const [currentExpenses, setCurrentExpenses] = useState(expenses);
-  const [totalSum, setTotalSum] = useState(calcExpenses(currentExpenses)); 
+import { doc, updateDoc } from "firebase/firestore";
+import { db } from "../config/firestore";
+
+const PieChartInfo = ({currentExpenses, setCurrentExpenses}) => {
+  const [totalSum, setTotalSum] = useState(() => calcExpenses(currentExpenses));
+  const currentTravel = doc(db, "travels", "jwY5m9wy2XdpqhLrNxeu");
+  const deleteExpenseHandler = async (id) => {
+    const newExpenses = currentExpenses.filter((expense) => expense.id !== id);
+    await updateDoc(currentTravel, {
+      expenses: newExpenses,
+    });
+    setCurrentExpenses(newExpenses);
+    setTotalSum(() => calcExpenses(newExpenses));
+  };
   return (
     <div className="CHART-INFO flex flex-col min-w-400">
       <span className="uppercase underline">Expenses</span>
@@ -15,9 +25,11 @@ const PieChartInfo = () => {
           {currentExpenses.map((expense) => (
             <PieChartItem
               key={expense.id}
+              id={expense.id}
               category={expense.category}
               title={expense.title}
               price={expense.price}
+              deleteExpenseHandler={deleteExpenseHandler}
             />
           ))}
         </ul>
