@@ -1,33 +1,21 @@
-import checkIcon from "../assets/check.svg";
-import deleteIcon from "../assets/delete.svg";
-import { useState } from "react";
-import CheckButton from "./CheckButton";
-import DeleteButton from "./DeleteButton";
+import { useRef } from "react";
 
-const ScheduleInput = ({ task, id, done, deleteTaskHandler, emptyTaskValidation }) => {
-  const [scheduleTask, setScheduleTask] = useState(task);
-  const [taskDone, setTaskDone] = useState(done);
-  const editTaskHandler = (e) => {
-    setScheduleTask(e.target.value);
-  };
-  const doneTaskHandler = () => {
-    setTaskDone((prevState) => !prevState);
+const ScheduleInput = ({ placeholder, newEventValueHandler }) => {
+  const inputRef = useRef();
+  const inputHandler = () => {
+    newEventValueHandler(inputRef.current.value);
   };
   return (
-    <div className="SCHEDULE-INPUT group flex gap-2 hover:bg-gray-200">
+    <div className="SCHEDULE-INPUT">
       <input
-        className={ taskDone ? `line-through text-placeholderColor outline-outlineColor rounded-lg px-1 group-hover:bg-gray-200` : "outline-outlineColor rounded-lg px-1 group-hover:bg-gray-200"}
+        onChange={inputHandler}
+        ref={inputRef}
         type="text"
-        value={scheduleTask}
-        onChange={editTaskHandler}
-        onBlur={() => {
-          if (scheduleTask.length === 0) {
-            emptyTaskValidation(id);
-          }
-        }}
+        className={
+          "SEARCH-INPUT text-start border border-black rounded-lg w-64 h-8 px-1.5 outline-1 outline-outlineColor placeholder-placeholderColor"
+        }
+        placeholder={placeholder}
       />
-      <CheckButton onClick={doneTaskHandler} display="invisible" />
-      <DeleteButton onClick={()=> {deleteTaskHandler(id)}} display="invisible" />
     </div>
   );
 };

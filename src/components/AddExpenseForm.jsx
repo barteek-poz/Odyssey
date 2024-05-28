@@ -6,6 +6,7 @@ import { doc, updateDoc } from "firebase/firestore";
 import { db } from "../config/firestore";
 import calcExpenses from "../helpers/calcExpenses";
 import { useState } from "react";
+import { useParams } from "react-router-dom";
 
 const AddExpenseForm = ({
   formDisplayHandler,
@@ -17,7 +18,8 @@ const AddExpenseForm = ({
   const [titleValue, setTitleValue] = useState("");
   const [priceValue, setPriceValue] = useState("");
   const [formError, setFormError] = useState(null);
-  const currentTravel = doc(db, "travels", "jwY5m9wy2XdpqhLrNxeu");
+  const params = useParams()
+  const currentTravel = doc(db, "travels", params.id);
 
   const addExpenseHandler = async () => {
     if (
@@ -25,20 +27,21 @@ const AddExpenseForm = ({
       titleValue.trim().length !== 0 &&
       priceValue.trim().length !== 0
     ) {
-      const newExpenses = [
+      const newExpensesList = [
         ...currentExpenses,
         {
           id: Date.now(),
           category: categoryValue,
           title: titleValue,
           price: priceValue,
+         
         },
       ];
       await updateDoc(currentTravel, {
-        expenses: newExpenses,
+        expenses: newExpensesList,
       });
-      setCurrentExpenses(newExpenses);
-      setTotalSum(calcExpenses(newExpenses));
+      setCurrentExpenses(newExpensesList);
+      setTotalSum(calcExpenses(newExpensesList));
       formDisplayHandler();
       setFormError(false);
     } else setFormError(true);
@@ -69,8 +72,8 @@ const AddExpenseForm = ({
           setValue={setPriceValue}
           setFormError={setFormError}
         />
-        <CheckButton onClick={addExpenseHandler} />
-        <DeleteButton onClick={formDisplayHandler} />
+        <CheckButton onBtnClick={addExpenseHandler} />
+        <DeleteButton onBtnClick={formDisplayHandler} />
       </div>
       {formError && (
         <p className="FORM-ERROR text-red-600">Please, fill out all fields</p>

@@ -1,36 +1,66 @@
 import { useEffect, useState } from "react";
-import ScheduleInput from "./ScheduleInput";
-import { useLoaderData } from "react-router-dom";
+import { useLoaderData, useParams } from "react-router-dom";
 import AddButton from "./AddButton";
+import { doc, updateDoc } from "firebase/firestore";
+import { db } from "../config/firestore";
+import AddScheduleForm from "./AddScheduleForm";
+import ScheduleItem from "./ScheduleItem";
 
 const Schedule = () => {
-  const [isNewTask, setIsNewTask] = useState(false);
-  const {schedule} = useLoaderData();
-  const addTask = () => {
-    setSchedule((prevState) => {
-      return [...prevState, { id: Date.now(), text: "" }];
+  const { schedule } = useLoaderData();
+  const [scheduleList, setScheduleList] = useState(schedule);
+  const [newEventValue, setNewEventValue] = useState("");
+  const [formIsOpen, setFormIsOpen] = useState(false);
+  const params = useParams();
+  const currentTravel = doc(db, "travels", params.id);
+
+  const scheduleFormHandler = () => {
+    setFormIsOpen((prevState) => !prevState);
+  };
+
+  const newEventValueHandler = (eventValue) => {
+    setNewEventValue(eventValue);
+  };
+
+  const addEventHandler = async () => {
+    const newScheduleList = [
+      ...scheduleList,
+      {
+        id: Date.now(),
+        text: newEventValue,
+        done: false,
+      },
+    ];
+    await updateDoc(currentTravel, {
+      schedule: newScheduleList,
     });
-    setIsNewTask(true);
+    setScheduleList(newScheduleList);
+    setFormIsOpen(false);
   };
 
-  const deleteTaskHandler = (id) => {
-    const activeTasks = schedule.filter((task) => task.id !== id);
-    setSchedule(activeTasks);
+  const eventStatusHandler = async (eventId) => {
+    const updatedScheduleList = scheduleList.map((scheduleEvent) => {
+      if (scheduleEvent.id === eventId) {
+        return { ...scheduleEvent, done: !scheduleEvent.done };
+      } else {
+        return scheduleEvent;
+      }
+    });
+    console.log(updatedScheduleList);
+    await updateDoc(currentTravel, {
+      schedule: updatedScheduleList,
+    });
+    setScheduleList(updatedScheduleList);
   };
 
-  useEffect(() => {
-    if (isNewTask) {
-      const lastInput =
-        document.querySelector(".SCHEDULE-LIST").lastChild.firstChild
-          .firstChild;
-      lastInput.focus();
-      setIsNewTask(false);
-    }
-  }, [isNewTask]);
-
-  const emptyTaskValidation = (id) => {
-    const correctTasks = schedule.filter((task) => task.id !== id);
-    setSchedule(correctTasks);
+  const deleteEventHandler = async (eventId) => {
+    const updatedScheduleList = scheduleList?.filter(
+      (scheduleEvent) => scheduleEvent.id !== eventId
+    );
+    await updateDoc(currentTravel, {
+      schedule: updatedScheduleList,
+    });
+    setScheduleList(updatedScheduleList);
   };
 
   return (
@@ -40,21 +70,29 @@ const Schedule = () => {
         <span>Here you can write your travel plans:</span>
       </div>
       <ul className="SCHEDULE-LIST flex flex-col gap-2">
-        {schedule?.map((task, index) => {
+        {scheduleList?.map((task, index) => {
           return (
-            <li key={index} className="list-disc ml-5">
-              <ScheduleInput
+            <li key={index} className="list-disc ml-5 ">
+              <ScheduleItem
                 id={task.id}
                 task={task.text}
-                deleteTaskHandler={deleteTaskHandler}
-                emptyTaskValidation={emptyTaskValidation}
+                done={task.done}
+                deleteEventHandler={deleteEventHandler}
+                eventStatusHandler={eventStatusHandler}
               />
             </li>
           );
         })}
       </ul>
-
-      <AddButton text='Add event' onClick={addTask}/>
+      {formIsOpen ? (
+        <AddScheduleForm
+          newEventValueHandler={newEventValueHandler}
+          scheduleFormHandler={scheduleFormHandler}
+          addTaskHandler={addEventHandler}
+        />
+      ) : (
+        <AddButton text="Add travel event" onBtnClick={scheduleFormHandler} />
+      )}
     </div>
   );
 };

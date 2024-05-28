@@ -1,11 +1,11 @@
 import checkIcon from "../assets/check.svg";
-const CheckButton = ({ onClick, display}) => {
+const CheckButton = ({ onBtnClick, display}) => {
   const isVisible = {
     visible: 'visible', 
     invisible: 'invisible'
   }
   return (
-    <button onClick={onClick} className="CHECK-BUTTON">
+    <button onClick={onBtnClick} className="CHECK-BUTTON">
       <img
         src={checkIcon}
         alt="check-icon"

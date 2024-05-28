@@ -1,10 +1,10 @@
 import { Chart as ChartJS, Tooltip, Legend, ArcElement } from "chart.js";
 import { Pie } from "react-chartjs-2";
 import calcExpenses from "../helpers/calcExpenses";
+import NoExpenses from "./NoExpenses";
 
 ChartJS.register(Tooltip, Legend, ArcElement);
-const PieChart = ({currentExpenses}) => {
- 
+const PieChart = ({ currentExpenses }) => {
   const {
     foodExpenses,
     transportExpenses,
@@ -42,7 +42,15 @@ const PieChart = ({currentExpenses}) => {
       },
     ],
   };
-  return <Pie options={options} data={pieData} />;
+  return (
+    <>
+      {currentExpenses.length !== 0 ? (
+        <Pie options={options} data={pieData} />
+      ) : (
+        <NoExpenses />
+      )}
+    </>
+  );
 };
 
 export default PieChart;
