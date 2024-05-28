@@ -11,7 +11,7 @@ const AddExpense = ({ currentExpenses, setCurrentExpenses, setTotalSum }) => {
   return (
     <div className="ADD-EXPENSE mb-1">
       {!formOpen && (
-        <AddButton text="Add expense" onClick={formDisplayHandler} />
+        <AddButton text="Add expense" onBtnClick={formDisplayHandler} />
       )}
       {formOpen && (
         <AddExpenseForm

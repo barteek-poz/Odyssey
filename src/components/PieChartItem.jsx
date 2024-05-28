@@ -16,7 +16,7 @@ const PieChartItem = ({ id, category, title, price, deleteExpenseHandler }) => {
       <p className="ml-auto">- {price}€</p>
       <DeleteButton
         display="invisible"
-        onClick={() => {
+        onBtnClick={() => {
           deleteExpenseHandler(id);
         }}
       />

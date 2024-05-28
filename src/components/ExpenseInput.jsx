@@ -5,7 +5,7 @@ const ExpenseInput = ({ placeholder, type, setValue, setFormError }) => {
   const errorValidation = (e) => {
     if (e.target.value.trim().length === 0) {
       setBlurError(true);
-    } else setError(false);
+    } else setBlurError(false);
   };
   const inputHandler = (e) => {
     if (setFormError) {

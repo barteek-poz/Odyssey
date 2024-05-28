@@ -24,6 +24,7 @@ const HomepageForm = () => {
       img: travelPhoto
         ? travelPhoto.results[0].urls.regular
         : "https://images.unsplash.com/photo-1488646953014-85cb44e25828?q=80&w=1935&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      expenses: [],
     };
     try {
       const newTravel = await addDoc(collection(db, "travels"), {
@@ -50,10 +51,9 @@ const HomepageForm = () => {
         </label>
         <HomepageDatePicker setTravelDate={setTravelDate} />
       </div>
-      <button
-      className="BUTTON border border-black rounded-lg w-24 h-8 cursor-pointer hover:bg-black hover:text-white transition-colors duration-300">
-      Create
-    </button>
+      <button className="BUTTON border border-black rounded-lg w-24 h-8 cursor-pointer hover:bg-black hover:text-white transition-colors duration-300">
+        Create
+      </button>
     </form>
   );
 };
