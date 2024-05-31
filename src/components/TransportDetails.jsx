@@ -19,20 +19,20 @@ const TransportDetails = () => {
     if (direction === "to") {
       updatedTransport = {
         to: {
-          ...transportData.to,
+          ...transportData?.to,
           [category]: inputValue,
         },
         from: {
-          ...transportData.from,
+          ...transportData?.from,
         },
       };
     } else {
       updatedTransport = {
         to: {
-          ...transportData.to,
+          ...transportData?.to,
         },
         from: {
-          ...transportData.from,
+          ...transportData?.from,
           [category]: inputValue,
         },
       };

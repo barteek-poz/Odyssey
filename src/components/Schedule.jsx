@@ -23,14 +23,26 @@ const Schedule = () => {
   };
 
   const addEventHandler = async () => {
-    const newScheduleList = [
-      ...scheduleList,
-      {
-        id: Date.now(),
-        text: newEventValue,
-        done: false,
-      },
-    ];
+    let newScheduleList;
+    if (scheduleList) {
+      newScheduleList = [
+        ...scheduleList,
+        {
+          id: Date.now(),
+          text: newEventValue,
+          done: false,
+        },
+      ];
+    } else {
+      newScheduleList = [
+        {
+          id: Date.now(),
+          text: newEventValue,
+          done: false,
+        },
+      ];
+    }
+
     await updateDoc(currentTravel, {
       schedule: newScheduleList,
     });
@@ -46,7 +58,6 @@ const Schedule = () => {
         return scheduleEvent;
       }
     });
-    console.log(updatedScheduleList);
     await updateDoc(currentTravel, {
       schedule: updatedScheduleList,
     });
@@ -70,19 +81,21 @@ const Schedule = () => {
         <span>Here you can write your travel plans:</span>
       </div>
       <ul className="SCHEDULE-LIST flex flex-col gap-2">
-        {scheduleList?.map((task, index) => {
-          return (
-            <li key={index} className="list-disc ml-5 ">
-              <ScheduleItem
-                id={task.id}
-                task={task.text}
-                done={task.done}
-                deleteEventHandler={deleteEventHandler}
-                eventStatusHandler={eventStatusHandler}
-              />
-            </li>
-          );
-        })}
+        {scheduleList
+          ? scheduleList.map((task, index) => {
+              return (
+                <li key={index} className="list-disc ml-5 ">
+                  <ScheduleItem
+                    id={task.id}
+                    task={task.text}
+                    done={task.done}
+                    deleteEventHandler={deleteEventHandler}
+                    eventStatusHandler={eventStatusHandler}
+                  />
+                </li>
+              );
+            })
+          : ""}
       </ul>
       {formIsOpen ? (
         <AddScheduleForm

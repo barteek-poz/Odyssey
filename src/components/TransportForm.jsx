@@ -59,7 +59,7 @@ const transportInputHandler = (category, inputValue) => {
         label="Time of departure"
         placeholder="Enter your time of departure"
         category="timeDeparture"
-        type="number"
+        
         updateDataHandler={transportInputHandler}
       />
       <DetailsInput
@@ -67,7 +67,7 @@ const transportInputHandler = (category, inputValue) => {
         label="Time of arrival"
         placeholder="Enter your time of arrival"
         category="timeArrival"
-        type="number"
+        
         updateDataHandler={transportInputHandler}
       />
     </div>
