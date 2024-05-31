@@ -9,11 +9,21 @@ const SelectBar = ({
   setFormError,
 }) => {
   const [value, setValue] = useState(initialValue);
-  const selectHandler = (selecValue) => {
+  const [blurError, setBlurError] = useState(false);
+
+  const blurErrorValidation = () => {
+    console.log(value);
+    if (!value) {
+      setBlurError(true);
+    } else setBlurError(false);
+  };
+  const selectHandler = (selectValue) => {
     if (setCategoryValue) {
-      setCategoryValue(selecValue);
-    } 
-    setValue(selecValue);
+      setCategoryValue(selectValue);
+      setBlurError(false);
+    }
+    setValue(selectValue);
+    setBlurError(false);
   };
   return (
     <div className="flex items-center">
@@ -21,11 +31,14 @@ const SelectBar = ({
       <Select
         onChange={(selectValue) => {
           selectHandler(selectValue);
-          setFormError(false)
+          if (setFormError) {
+            setFormError(false);
+          }
         }}
+        onBlur={blurErrorValidation}
         defaultValue={value}
         placeholder={placeholder}
-        style={{ borderColor: "black" }}
+        status={blurError ? "error" : ""}
         options={options}
       />
     </div>

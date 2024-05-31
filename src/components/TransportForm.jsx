@@ -2,16 +2,23 @@ import DetailsInput from "./DetailsInput";
 import SelectBar from "./SelectBar";
 
 const TransportForm = ({
-  transportType,
-  ticketNumber,
-  cityDeparture,
-  timeDeparture,
-  timeArrival
+  transportDirection,
+  transportInfo,
+  updateTransportDataHandler,
 }) => {
+  
+const transportInputHandler = (category, inputValue) => {
+  updateTransportDataHandler(transportDirection, category, inputValue)
+}
+
   return (
     <div className="flex flex-col gap-4">
       <SelectBar
-        initialValue={transportType ? transportType : 'Select your form of transport'}
+        initialValue={
+          transportInfo?.type
+            ? transportInfo.type
+            : "Select your form of transport"
+        }
         placeholder="Select your form of transport"
         label="Form of transport"
         options={[
@@ -23,24 +30,45 @@ const TransportForm = ({
         ]}
       />
       <DetailsInput
-        initialValue={ticketNumber}
+        initialValue={transportInfo?.ticketNumber}
         label="Ticket number"
         placeholder="Enter your ticket number"
+        category="ticketNumber"
+        type="number"
+        updateDataHandler={transportInputHandler}
       />
+      {transportDirection === "from" ? (
+        <DetailsInput
+          initialValue={transportInfo?.cityArrival}
+          label="City of arrival"
+          placeholder="Enter your city of arrival"
+          category="cityArrival"
+          updateDataHandler={transportInputHandler}
+        />
+      ) : (
+        <DetailsInput
+          initialValue={transportInfo?.cityDeparture}
+          label="City of departure"
+          placeholder="Enter your city of departure"
+          category="cityDeparture"
+          updateDataHandler={transportInputHandler}
+        />
+      )}
       <DetailsInput
-        initialValue={cityDeparture}
-        label="City of departure"
-        placeholder="Enter your city of departure"
-      />
-      <DetailsInput
-        initialValue={timeDeparture}
+        initialValue={transportInfo?.timeDeparture}
         label="Time of departure"
         placeholder="Enter your time of departure"
+        category="timeDeparture"
+        type="number"
+        updateDataHandler={transportInputHandler}
       />
       <DetailsInput
-        initialValue={timeArrival}
+        initialValue={transportInfo?.timeArrival}
         label="Time of arrival"
         placeholder="Enter your time of arrival"
+        category="timeArrival"
+        type="number"
+        updateDataHandler={transportInputHandler}
       />
     </div>
   );
