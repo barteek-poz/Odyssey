@@ -88,7 +88,7 @@ const Schedule = () => {
         <AddScheduleForm
           newEventValueHandler={newEventValueHandler}
           scheduleFormHandler={scheduleFormHandler}
-          addTaskHandler={addEventHandler}
+          addEventHandler={addEventHandler}
         />
       ) : (
         <AddButton text="Add travel event" onBtnClick={scheduleFormHandler} />

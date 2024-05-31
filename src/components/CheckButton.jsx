@@ -5,7 +5,7 @@ const CheckButton = ({ onBtnClick, display}) => {
     invisible: 'invisible'
   }
   return (
-    <button onClick={onBtnClick} className="CHECK-BUTTON">
+    <button onClick={onBtnClick} className="CHECK-BUTTON min-w-5 min-h-5">
       <img
         src={checkIcon}
         alt="check-icon"

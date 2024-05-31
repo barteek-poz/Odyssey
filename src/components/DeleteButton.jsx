@@ -5,7 +5,7 @@ const DeleteButton = ({ onBtnClick, display}) => {
     invisible: 'invisible'
   }
   return (
-    <button className="DELETE-BUTTON" onClick={onBtnClick}>
+    <button className="DELETE-BUTTON min-w-5 min-h-5" onClick={onBtnClick}>
       <img
         src={deleteIcon}
         alt="delete-icon"
