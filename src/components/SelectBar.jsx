@@ -5,6 +5,7 @@ const SelectBar = ({
   placeholder,
   options,
   initialValue,
+  category,
   setCategoryValue,
   setFormError,
 }) => {
@@ -12,15 +13,19 @@ const SelectBar = ({
   const [blurError, setBlurError] = useState(false);
 
   const blurErrorValidation = () => {
-    console.log(value);
     if (!value) {
       setBlurError(true);
     } else setBlurError(false);
   };
   const selectHandler = (selectValue) => {
-    if (setCategoryValue) {
+    if (category && setCategoryValue) {
+      setCategoryValue(category, selectValue);
+      setBlurError(false);
+    } else if (setCategoryValue) {
       setCategoryValue(selectValue);
       setBlurError(false);
+    } else if(setFormError) {
+      setFormError(false)
     }
     setValue(selectValue);
     setBlurError(false);
@@ -31,9 +36,6 @@ const SelectBar = ({
       <Select
         onChange={(selectValue) => {
           selectHandler(selectValue);
-          if (setFormError) {
-            setFormError(false);
-          }
         }}
         onBlur={blurErrorValidation}
         defaultValue={value}
