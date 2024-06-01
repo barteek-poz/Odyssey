@@ -28,6 +28,8 @@ const transportInputHandler = (category, inputValue) => {
           { value: "car", label: "Car" },
           { value: "other", label: "Other" },
         ]}
+        category="type"
+        setCategoryValue={transportInputHandler}
       />
       <DetailsInput
         initialValue={transportInfo?.ticketNumber}
