@@ -44,7 +44,7 @@ const Homepage = () => {
         </section>
       </div>
       <div className="MAP-CONTAINER xl:w-1/2">
-        <Map allTravels={loaderTravels} />
+        <Map allTravels={loaderTravels} scrollZoom={true} />
       </div>
     </section>
   );

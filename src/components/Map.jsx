@@ -1,5 +1,6 @@
 import "leaflet/dist/leaflet.css";
 import { useContext } from "react";
+import { Link } from "react-router-dom";
 import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
 import { SearchLocationContext } from "../context/SearchLocationContext";
 import CenterMap from "./CenterMap";
@@ -7,16 +8,24 @@ import pinIconSvg from "../assets/pin.svg";
 import { Icon } from "leaflet";
 import { dateFormat } from "../helpers/dateFormat";
 
-const Map = ({ allTravels, singleTravelLocation }) => {
+const Map = ({ allTravels, singleTravelLocation, scrollZoom }) => {
   const ctx = useContext(SearchLocationContext);
   const pinIcon = new Icon({
     iconUrl: pinIconSvg,
     iconSize: [50, 50],
     iconAnchor: [25, 50],
   });
+  console.log(allTravels);
   return (
     <div className="MAP-CONTAINER w-full h-full">
-      <MapContainer center={singleTravelLocation ? [singleTravelLocation._lat, singleTravelLocation._long] : [52.406376, 16.925167]} zoom={singleTravelLocation ? 10 : 5}>
+      <MapContainer
+        scrollWheelZoom={scrollZoom}
+        center={
+          singleTravelLocation
+            ? [singleTravelLocation._lat, singleTravelLocation._long]
+            : [52.406376, 16.925167]
+        }
+        zoom={singleTravelLocation ? 10 : 5}>
         <TileLayer
           attribution='&copy; <a href="https://www.mapbox.com/about/maps/">Mapbox</a> ©
       <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>
@@ -47,9 +56,7 @@ const Map = ({ allTravels, singleTravelLocation }) => {
                     <span className="text-xs my-0">
                       {dateFormat(travel.date)}
                     </span>
-                    <a href="" className="text-black">
-                      See details...
-                    </a>
+                    <Link to={`/travels/${travel.id}`}>See details...</Link>
                   </div>
                 </Popup>
               </Marker>

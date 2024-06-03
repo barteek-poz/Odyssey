@@ -14,7 +14,7 @@ const TravelDetails = () => {
     <section className="TRAVEL-DETAILS w-full h-full">
       <Navigation />
       <div className="MAP w-full h-72 2xl:h-96">
-        <Map singleTravelLocation={loaderData.geolocation} />
+        <Map singleTravelLocation={loaderData.geolocation} scrollZoom={false} />
       </div>
       <CenterComponent>
         <div className="TRAVEL-DATA flex flex-col justify-center gap-10 ">
