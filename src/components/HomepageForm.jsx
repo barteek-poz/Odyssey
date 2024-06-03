@@ -32,7 +32,7 @@ const HomepageForm = () => {
       });
       navigate(`/travels/${newTravel.id}`);
     } catch (error) {
-      console.log(error);
+      alert(error);
     }
   };
 
