@@ -36,6 +36,27 @@ a {
   border: 1px solid black
 }
 
+/* MODAL */
+.ant-modal-footer .ant-btn-default {
+color: red;
+border: 1px solid red;
+}
+.ant-modal-footer:hover .ant-btn-default:hover {
+color:white;
+background-color: red;
+border: 1px solid red;
+}
+
+.ant-modal-footer .ant-btn-primary {
+  color: #10b981;
+  border: 1px solid #10b981;
+  background-color: white;
+  }
+.ant-modal-footer:hover .ant-btn-primary:hover {
+  color: white;
+  background-color: #10b981;
+  }
+
 /* LEAFLET */
 .leaflet-container {
   width: 100%;

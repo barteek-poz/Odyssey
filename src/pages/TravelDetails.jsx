@@ -7,6 +7,7 @@ import Schedule from "../components/Schedule";
 import TransportDetails from "../components/TransportDetails";
 import CenterComponent from "../components/CenterComponent";
 import PieChartForm from "../components/PieChartForm";
+import ModalComponent from "../components/ModalComponent";
 
 const TravelDetails = () => {
   const loaderData = useLoaderData();
@@ -36,6 +37,7 @@ const TravelDetails = () => {
             </div>
           </div>
           <PieChartForm />
+        <ModalComponent />
         </div>
       </CenterComponent>
     </section>
