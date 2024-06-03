@@ -9,7 +9,7 @@ const TravelSmall = ({ img, location, date, id }) => {
       </div>
       <div className="TRAVEL-INFO-SMALL px-1">
         <h3 className="sm:text-base 2xl:text-xl">{location}</h3>
-        <span className="sm:text-sm 2xl:text-base">{travelDate}</span>
+        <span className="sm:text-sm ">{travelDate}</span>
       </div>
     </Link>
   );

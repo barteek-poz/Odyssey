@@ -15,7 +15,6 @@ const Map = ({ allTravels, singleTravelLocation, scrollZoom }) => {
     iconSize: [50, 50],
     iconAnchor: [25, 50],
   });
-  console.log(allTravels);
   return (
     <div className="MAP-CONTAINER w-full h-full">
       <MapContainer
