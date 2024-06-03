@@ -4,9 +4,27 @@ import ButtonRound from "../components/ButtonRound";
 import Map from "../components/Map";
 import HomepageForm from "../components/HomepageForm";
 import { Link, useLoaderData } from "react-router-dom";
+import { useEffect, useState } from "react";
+import { homepageTravels } from "../helpers/homepageTravels";
 const Homepage = () => {
+  const [travelsToDisplay, setTravelsToDisplay] = useState(() => {
+    return homepageTravels(window.innerWidth)
+  });
+  const [screenWidth, setScreenWidth] = useState(window.innerWidth);
   const loaderTravels = useLoaderData();
-  
+
+  useEffect(() => {
+    const handleWindowResize = () => {
+      setTravelsToDisplay(homepageTravels(window.innerWidth));
+      setScreenWidth(window.innerWidth);
+    };
+    window.addEventListener("resize", handleWindowResize);
+    return () => {
+      window.removeEventListener("resize", handleWindowResize);
+    };
+  }, [screenWidth]);
+
+
   return (
     <section className="HOMEPAGE w-full h-full flex">
       <div className="SEARCH-CONTAINER xl:w-1/2 px-10 py-5">
@@ -20,7 +38,7 @@ const Homepage = () => {
           </h2>
           <div className="flex items-center">
             <div className="TRAVELS-BOX flex items-center gap-14">
-              {loaderTravels?.map((travel) => {
+              {loaderTravels.slice(0, travelsToDisplay)?.map((travel) => {
                 return (
                   <TravelSmall
                     key={travel.id}
@@ -43,7 +61,7 @@ const Homepage = () => {
           </div>
         </section>
       </div>
-      <div className="MAP-CONTAINER xl:w-1/2">
+      <div className="MAP-CONTAINER w-1/2">
         <Map allTravels={loaderTravels} scrollZoom={true} />
       </div>
     </section>
