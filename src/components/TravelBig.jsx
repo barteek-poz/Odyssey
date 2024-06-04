@@ -1,5 +1,6 @@
 import airplaneIcon from "../assets/airplane.svg";
 import { dateFormat } from "../helpers/dateFormat";
+import transportType from "../helpers/transportType";
 import ButtonRoundSmall from "./ButtonRoundSmall";
 import { Link } from "react-router-dom";
 
@@ -10,10 +11,13 @@ const TravelBig = ({
   from,
   to,
   id,
-  transport,
+  transportTo,
+  transportFrom,
   accomodation,
 }) => {
   const travelDate = dateFormat(date);
+  const transportToImg = transportType(transportTo);
+  const transportFromImg = transportType(transportFrom);
   return (
     <div className="TRAVEL-BIG flex">
       <Link
@@ -27,10 +31,18 @@ const TravelBig = ({
         <div className="TRANSPORT-INFO flex">
           Transport:
           <p className="px-1">{from}</p>
-          <img src={airplaneIcon} alt="travel-icon" className="w-7 h-7 p-0.5" />
+          <img
+            src={transportToImg}
+            alt="travel-icon"
+            className="w-7 h-7 p-0.5"
+          />
           {location} |<p className="px-1">{location}</p>
-          <img src={airplaneIcon} alt="travel-icon" className="w-7 h-7 p-0.5" />
-          {to}
+          <img
+            src={transportFromImg}
+            alt="travel-icon"
+            className="w-7 h-7 p-0.5"
+          />
+          <p className="px-1">{to}</p>
         </div>
         <p>Accomodation: {accomodation}</p>
         <Link to={`/travels/${id}`} className="flex group">
