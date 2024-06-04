@@ -1,7 +1,7 @@
 import { useContext, useState } from "react";
 import { SearchLocationContext } from "../context/SearchLocationContext";
 
-const SearchInput = ({ label, placeholder }) => {
+const SearchInput = ({ label, placeholder, setFormError }) => {
   const [searchList, setSearchList] = useState("");
   const [inputValue, setInputValue] = useState("");
   const ctx = useContext(SearchLocationContext);
@@ -23,12 +23,18 @@ const SearchInput = ({ label, placeholder }) => {
       .then((res) => {
         setSearchList(res);
       })
-      .catch((err) => console.log(err));
+      .catch((err) => alert(err));
   };
 
   const inputChangeHandler = (value) => {
     setInputValue(value);
     searchLocationHandler(value);
+  };
+
+  const onSearchListClick = (place) => {
+    setInputValue(place.name);
+    ctx.setLocation(place);
+    setSearchList([]);
   };
   return (
     <div className="INPUT-BOX flex flex-col">
@@ -38,6 +44,8 @@ const SearchInput = ({ label, placeholder }) => {
       <input
         value={inputValue}
         onChange={(e) => inputChangeHandler(e.target.value)}
+        onFocus={() => setFormError(false)}
+        onBlur={()=>{ctx.setLocation('')}}
         type="text"
         id="search-input"
         name="search-input"
@@ -51,11 +59,7 @@ const SearchInput = ({ label, placeholder }) => {
               <li
                 className="cursor-pointer"
                 key={place.place_id}
-                onClick={() => {
-                  setInputValue(place.name);
-                  ctx.setLocation(place);
-                  setSearchList([]);
-                }}>
+                onClick={() => onSearchListClick(place)}>
                 {place.display_name}
               </li>
             );
