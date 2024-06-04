@@ -11,6 +11,7 @@ import ModalComponent from "../components/ModalComponent";
 
 const TravelDetails = () => {
   const loaderData = useLoaderData();
+  
   return (
     <section className="TRAVEL-DETAILS w-full h-full">
       <Navigation />

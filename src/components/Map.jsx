@@ -1,5 +1,5 @@
 import "leaflet/dist/leaflet.css";
-import { useContext } from "react";
+import { useContext} from "react";
 import { Link } from "react-router-dom";
 import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
 import { SearchLocationContext } from "../context/SearchLocationContext";
@@ -15,6 +15,7 @@ const Map = ({ allTravels, singleTravelLocation, scrollZoom }) => {
     iconSize: [50, 50],
     iconAnchor: [25, 50],
   });
+ 
   return (
     <div className="MAP-CONTAINER w-full h-full">
       <MapContainer
@@ -27,9 +28,7 @@ const Map = ({ allTravels, singleTravelLocation, scrollZoom }) => {
         zoom={singleTravelLocation ? 10 : 5}>
         <TileLayer
           attribution='&copy; <a href="https://www.mapbox.com/about/maps/">Mapbox</a> ©
-      <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>
-     
-      '
+      <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
           url={`https://api.mapbox.com/styles/v1/barteek-poz/clvj9tqgs01a101phdesc1yek/tiles/256/{z}/{x}/{y}@2x?access_token=${
             import.meta.env.VITE_MAPBOX_TOKEN
           }`}
@@ -55,7 +54,7 @@ const Map = ({ allTravels, singleTravelLocation, scrollZoom }) => {
                     <span className="text-xs my-0">
                       {dateFormat(travel.date)}
                     </span>
-                    <Link to={`/travels/${travel.id}`}>See details...</Link>
+                    <Link to={`/travels/${travel.id}`} onClick={ctx.clearContext}>See details...</Link>
                   </div>
                 </Popup>
               </Marker>

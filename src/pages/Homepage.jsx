@@ -4,15 +4,17 @@ import ButtonRound from "../components/ButtonRound";
 import Map from "../components/Map";
 import HomepageForm from "../components/HomepageForm";
 import { Link, useLoaderData } from "react-router-dom";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { homepageTravels } from "../helpers/homepageTravels";
+import { SearchLocationContext } from "../context/SearchLocationContext";
+
 const Homepage = () => {
   const [travelsToDisplay, setTravelsToDisplay] = useState(() => {
-    return homepageTravels(window.innerWidth)
+    return homepageTravels(window.innerWidth);
   });
   const [screenWidth, setScreenWidth] = useState(window.innerWidth);
   const loaderTravels = useLoaderData();
-
+  const ctx = useContext(SearchLocationContext);
   useEffect(() => {
     const handleWindowResize = () => {
       setTravelsToDisplay(homepageTravels(window.innerWidth));
@@ -23,7 +25,6 @@ const Homepage = () => {
       window.removeEventListener("resize", handleWindowResize);
     };
   }, [screenWidth]);
-
 
   return (
     <section className="HOMEPAGE w-full h-full flex">
@@ -52,8 +53,12 @@ const Homepage = () => {
             </div>
             <Link
               to="/travels"
-              className="flex flex-col items-center gap-1 ml-4 group">
-              <ButtonRound />{" "}
+              className="flex flex-col items-center gap-1 ml-4 group"
+              >
+              <ButtonRound
+                size="big"
+                onBtnClick={ctx.clearContext}
+              />
               <span className="text-center duration-300 group-hover:border-b group-hover:border-b-black">
                 View all your travels
               </span>

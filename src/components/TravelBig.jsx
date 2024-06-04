@@ -1,7 +1,6 @@
-import airplaneIcon from "../assets/airplane.svg";
 import { dateFormat } from "../helpers/dateFormat";
 import transportType from "../helpers/transportType";
-import ButtonRoundSmall from "./ButtonRoundSmall";
+import ButtonRound from "./ButtonRound";
 import { Link } from "react-router-dom";
 
 const TravelBig = ({
@@ -47,7 +46,7 @@ const TravelBig = ({
         <p>Accomodation: {accomodation}</p>
         <Link to={`/travels/${id}`} className="flex group">
           <div>
-            <ButtonRoundSmall />
+            <ButtonRound size="small"/>
           </div>
           <p className="ml-4 h-6 duration-300 group-hover:border-b group-hover:border-b-black">
             More details...
