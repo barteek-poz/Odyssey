@@ -8,19 +8,22 @@ import { SearchLocationProvider } from "./context/SearchLocationContext.jsx";
 import { allTravelsLoader } from "./loaders/allTravelsLoader.js";
 import TravelDetails from "./pages/TravelDetails.jsx";
 import { singleTravelLoader } from "./loaders/singleTravelLoader.js";
+import ErrorPage from "./pages/ErrorPage.jsx";
 
 
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <Homepage />,
+    element: <Homepage/>,
     loader: allTravelsLoader,
+    errorElement: <ErrorPage/>
     
   },
   {
     path: "/travels",
     element: <Travels />,
     loader: allTravelsLoader,
+    errorElement: <ErrorPage/>
   },
   {
     path: "/travels/:id",
@@ -28,6 +31,7 @@ const router = createBrowserRouter([
     loader: ({ params }) => {
       return singleTravelLoader(params);
     },
+    errorElement: <ErrorPage/>
   },
 ]);
 
