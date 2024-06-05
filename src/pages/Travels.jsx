@@ -4,12 +4,11 @@ import Navigation from "../components/Navigation";
 import TravelBig from "../components/TravelBig";
 import { useLoaderData } from "react-router-dom";
 import { SearchLocationContext } from "../context/SearchLocationContext";
+import sortTravels from "../helpers/sortTravels";
 
 const Travels = () => {
   const loaderTravels = useLoaderData();
-  const ctx = useContext(SearchLocationContext);
-  
-  console.log(ctx);
+  const sortedTravels = sortTravels(loaderTravels)
   return (
     <section className="TRAVELS w-full h-full">
       <Navigation />
@@ -18,7 +17,7 @@ const Travels = () => {
       </div>
       <h1 className="sm:text-xl uppercase p-8 ml-8">Your travels</h1>
       <div className="TRAVELS-LIST mx-16 flex flex-wrap justify-between gap-8 ">
-        {loaderTravels?.map((travel) => {
+        {sortedTravels?.map((travel) => {
           return (
             <TravelBig
               key={travel.id}
