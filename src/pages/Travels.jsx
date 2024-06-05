@@ -16,7 +16,7 @@ const Travels = () => {
         <Map allTravels={loaderTravels} />
       </div>
       <h1 className="sm:text-xl uppercase p-8 ml-8">Your travels</h1>
-      <div className="TRAVELS-LIST mx-16 flex flex-wrap justify-between gap-8 ">
+      <div className="TRAVELS-LIST mx-16 flex flex-wrap gap-8 ">
         {sortedTravels?.map((travel) => {
           return (
             <TravelBig
