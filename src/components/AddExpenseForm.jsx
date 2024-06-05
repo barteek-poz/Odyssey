@@ -18,7 +18,7 @@ const AddExpenseForm = ({
   const [titleValue, setTitleValue] = useState("");
   const [priceValue, setPriceValue] = useState("");
   const [formError, setFormError] = useState(null);
-  const params = useParams()
+  const params = useParams();
   const currentTravel = doc(db, "travels", params.id);
 
   const addExpenseHandler = async () => {
@@ -34,7 +34,6 @@ const AddExpenseForm = ({
           category: categoryValue,
           title: titleValue,
           price: priceValue,
-         
         },
       ];
       await updateDoc(currentTravel, {
@@ -75,9 +74,7 @@ const AddExpenseForm = ({
         <CheckButton onBtnClick={addExpenseHandler} />
         <DeleteButton onBtnClick={formDisplayHandler} />
       </div>
-      {formError && (
-        <p className="FORM-ERROR text-red-600">Please, fill out all fields</p>
-      )}
+      <p className={formError ? `FORM-ERROR text-red-600` :`FORM-ERROR invisible` }>Please, fill out all fields</p>
     </>
   );
 };
