@@ -46,6 +46,7 @@ const AccomodationDetails = () => {
         placeholder="Enter your check-in time"
         initialValue={accomodation?.checkIn}
         category="checkIn"
+        type="time"
         updateDataHandler={updateAccomodationDataHandler}
       />
       <DetailsInput
