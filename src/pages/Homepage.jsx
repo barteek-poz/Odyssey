@@ -7,6 +7,7 @@ import { Link, useLoaderData } from "react-router-dom";
 import { useContext, useEffect, useState } from "react";
 import { homepageTravels } from "../helpers/homepageTravels";
 import { SearchLocationContext } from "../context/SearchLocationContext";
+import sortTravels from "../helpers/sortTravels";
 
 const Homepage = () => {
   const [travelsToDisplay, setTravelsToDisplay] = useState(() => {
@@ -14,6 +15,7 @@ const Homepage = () => {
   });
   const [screenWidth, setScreenWidth] = useState(window.innerWidth);
   const loaderTravels = useLoaderData();
+  const sortedTravels = sortTravels(loaderTravels);
   const ctx = useContext(SearchLocationContext);
   useEffect(() => {
     const handleWindowResize = () => {
@@ -25,7 +27,7 @@ const Homepage = () => {
       window.removeEventListener("resize", handleWindowResize);
     };
   }, [screenWidth]);
-
+  
   return (
     <section className="HOMEPAGE w-full h-full flex">
       <div className="SEARCH-CONTAINER xl:w-1/2 px-10 py-5">
@@ -39,7 +41,7 @@ const Homepage = () => {
           </h2>
           <div className="flex items-center">
             <div className="TRAVELS-BOX flex items-center gap-14">
-              {loaderTravels.slice(0, travelsToDisplay)?.map((travel) => {
+              {sortedTravels.slice(0, travelsToDisplay)?.map((travel) => {
                 return (
                   <TravelSmall
                     key={travel.id}
@@ -53,12 +55,8 @@ const Homepage = () => {
             </div>
             <Link
               to="/travels"
-              className="flex flex-col items-center gap-1 ml-4 group"
-              >
-              <ButtonRound
-                size="big"
-                onBtnClick={ctx.clearContext}
-              />
+              className="flex flex-col items-center gap-1 ml-4 group">
+              <ButtonRound size="big" onBtnClick={ctx.clearContext} />
               <span className="text-center duration-300 group-hover:border-b group-hover:border-b-black">
                 View all your travels
               </span>
