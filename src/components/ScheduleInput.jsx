@@ -1,6 +1,6 @@
 import { useRef } from "react";
 
-const ScheduleInput = ({ placeholder, newEventValueHandler }) => {
+const ScheduleInput = ({ placeholder, newEventValueHandler, setFormError }) => {
   const inputRef = useRef();
   const inputHandler = () => {
     newEventValueHandler(inputRef.current.value);
@@ -9,6 +9,7 @@ const ScheduleInput = ({ placeholder, newEventValueHandler }) => {
     <div className="SCHEDULE-INPUT">
       <input
         onChange={inputHandler}
+        onFocus={() => {setFormError(false)}}
         ref={inputRef}
         type="text"
         className={

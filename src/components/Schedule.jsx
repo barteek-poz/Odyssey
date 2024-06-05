@@ -8,14 +8,20 @@ import ScheduleItem from "./ScheduleItem";
 
 const Schedule = () => {
   const { schedule } = useLoaderData();
-  const [scheduleList, setScheduleList] = useState(schedule);
+  const [scheduleList, setScheduleList] = useState(() => {
+    if (schedule) {
+      return schedule;
+    } else [];
+  });
   const [newEventValue, setNewEventValue] = useState("");
   const [formIsOpen, setFormIsOpen] = useState(false);
+  const [formError, setFormError] = useState(false);
   const params = useParams();
   const currentTravel = doc(db, "travels", params.id);
 
   const scheduleFormHandler = () => {
     setFormIsOpen((prevState) => !prevState);
+    setFormError(false);
   };
 
   const newEventValueHandler = (eventValue) => {
@@ -23,31 +29,29 @@ const Schedule = () => {
   };
 
   const addEventHandler = async () => {
-    let newScheduleList;
-    if (scheduleList) {
-      newScheduleList = [
-        ...scheduleList,
-        {
-          id: Date.now(),
-          text: newEventValue,
-          done: false,
-        },
-      ];
-    } else {
-      newScheduleList = [
-        {
-          id: Date.now(),
-          text: newEventValue,
-          done: false,
-        },
-      ];
-    }
+    try {
+      if (newEventValue.length === 0) {
+        setFormError(true);
+      } else {
+        setFormError(false);
+        const newScheduleList = [
+          ...scheduleList,
+          {
+            id: Date.now(),
+            text: newEventValue,
+            done: false,
+          },
+        ];
 
-    await updateDoc(currentTravel, {
-      schedule: newScheduleList,
-    });
-    setScheduleList(newScheduleList);
-    setFormIsOpen(false);
+        await updateDoc(currentTravel, {
+          schedule: newScheduleList,
+        });
+        setScheduleList(newScheduleList);
+        setFormIsOpen(false);
+      }
+    } catch (err) {
+      alert(err);
+    }
   };
 
   const eventStatusHandler = async (eventId) => {
@@ -75,12 +79,12 @@ const Schedule = () => {
   };
 
   return (
-    <div className="SCHEDULE flex flex-col gap-4 items-start">
+    <div className="SCHEDULE flex flex-col items-start">
       <div className="SCHEDULE-HEADER flex flex-col gap-4">
         <span className="uppercase underline">Schedule</span>
-        <span>Here you can write your travel plans:</span>
+        <span className="mb-4">Here you can write your travel plans:</span>
       </div>
-      <ul className="SCHEDULE-LIST flex flex-col gap-2">
+      <ul className="SCHEDULE-LIST flex flex-col gap-2 mb-4">
         {scheduleList
           ? scheduleList.map((task, index) => {
               return (
@@ -98,11 +102,19 @@ const Schedule = () => {
           : ""}
       </ul>
       {formIsOpen ? (
-        <AddScheduleForm
-          newEventValueHandler={newEventValueHandler}
-          scheduleFormHandler={scheduleFormHandler}
-          addEventHandler={addEventHandler}
-        />
+        <>
+          <AddScheduleForm
+            newEventValueHandler={newEventValueHandler}
+            scheduleFormHandler={scheduleFormHandler}
+            addEventHandler={addEventHandler}
+            setFormError={setFormError}
+          />
+          {
+            <p className={formError ? `text-red-500` : `invisible`}>
+              Schedule event cannot be empty
+            </p>
+          }
+        </>
       ) : (
         <AddButton text="Add travel event" onBtnClick={scheduleFormHandler} />
       )}

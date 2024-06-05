@@ -16,7 +16,7 @@ const HomepageForm = () => {
 
   const addTravelHandler = async () => {
     try {
-      if (travelDate === undefined || ctx.location === undefined) {
+      if (travelDate === undefined || ctx.location === undefined || ctx.location === '') {
         setFormError(true);
       } else {
         setFormError(false);
@@ -45,7 +45,7 @@ const HomepageForm = () => {
       alert(error);
     }
   };
-
+  console.log(travelDate);
 
   return (
     <form
@@ -53,15 +53,15 @@ const HomepageForm = () => {
         event.preventDefault();
         addTravelHandler();
       }}
-      className="ADD-FORM flex flex-col gap-4 mt-16">
-      <h1 className="xl:text-xl uppercase">Plan your next adventure</h1>
+      className="ADD-FORM flex flex-col mt-16">
+      <h1 className="xl:text-xl uppercase mb-4">Plan your next adventure</h1>
       <SearchInput
         label="Destination"
         placeholder="Type your destination"
         setFormError={setFormError}
       />
       <div className="INPUT-BOX flex flex-col mb-3">
-        <label htmlFor="date-input" className="text-sm px-1">
+        <label htmlFor="date-input" className="text-sm px-1 mt-4">
           Date
         </label>
         <HomepageDatePicker
@@ -73,7 +73,7 @@ const HomepageForm = () => {
         <p className="ERROR text-red-500">Please, fill out all fields </p>
       )}
       <button
-        className={`BUTTON border border-black rounded-lg w-24 h-8 cursor-pointer hover:bg-black hover:text-white transition-colors duration-300`}>
+        className={`BUTTON border border-black rounded-lg mt-4 w-24 h-8 cursor-pointer hover:bg-black hover:text-white transition-colors duration-300`}>
         Create
       </button>
     </form>
