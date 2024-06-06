@@ -9,12 +9,14 @@ const ScheduleItem = ({
   eventStatusHandler,
 }) => {
   const isDone = {
-    true: 'line-through text-placeholderColor', 
-    false: ''
-  }
+    true: "line-through text-placeholderColor",
+    false: "",
+  };
   return (
     <div className="SCHEDULE-ITEM group flex items-center justify-between w-64 px-1 hover:bg-gray-200">
-      <p className={`${isDone[done]}`}>{task}</p>
+      <p className={`${isDone[done]}`}>
+        {task[0].toUpperCase() + task.slice(1)}
+      </p>
       <div className="flex gap-1">
         <CheckButton
           display="invisible"

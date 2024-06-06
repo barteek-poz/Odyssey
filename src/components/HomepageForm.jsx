@@ -45,7 +45,7 @@ const HomepageForm = () => {
       alert(error);
     }
   };
-  console.log(travelDate);
+ 
 
   return (
     <form

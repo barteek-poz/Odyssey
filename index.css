@@ -19,9 +19,7 @@ body {
 a {
   text-decoration: none;
 }
-input[type="time"] {
-  
-}
+
  input[type="time"]::-webkit-calendar-picker-indicator {
   background: none;
 }

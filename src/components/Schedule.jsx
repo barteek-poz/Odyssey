@@ -11,7 +11,7 @@ const Schedule = () => {
   const [scheduleList, setScheduleList] = useState(() => {
     if (schedule) {
       return schedule;
-    } else [];
+    } else return [];
   });
   const [newEventValue, setNewEventValue] = useState("");
   const [formIsOpen, setFormIsOpen] = useState(false);
@@ -53,7 +53,7 @@ const Schedule = () => {
       alert(err);
     }
   };
-
+  
   const eventStatusHandler = async (eventId) => {
     const updatedScheduleList = scheduleList.map((scheduleEvent) => {
       if (scheduleEvent.id === eventId) {

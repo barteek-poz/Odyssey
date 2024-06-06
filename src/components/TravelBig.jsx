@@ -18,7 +18,7 @@ const TravelBig = ({
   const transportToImg = transportType(transportTo);
   const transportFromImg = transportType(transportFrom);
   return (
-    <div className="TRAVEL-BIG flex min-w-[750px]">
+    <div className="TRAVEL-BIG flex min-w-[700px]">
       <Link
         to={`/travels/${id}`}
         className="TRAVEL-IMG-BIG sm:w-80 sm:h-44 rounded-lg overflow-hidden duration-300 hover:scale-105">
@@ -46,7 +46,7 @@ const TravelBig = ({
         <p>Accomodation: {accomodation}</p>
         <Link to={`/travels/${id}`} className="flex group">
           <div>
-            <ButtonRound size="small"/>
+            <ButtonRound size="small" />
           </div>
           <p className="ml-4 h-6 duration-300 group-hover:border-b group-hover:border-b-black">
             More details...

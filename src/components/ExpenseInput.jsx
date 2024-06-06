@@ -1,7 +1,6 @@
 const ExpenseInput = ({ placeholder, type, setValue, setFormError }) => {
   const inputHandler = (e) => {
     setValue(e.target.value);
-    setBlurError(false);
   };
   return (
     <div className="EXPENSE-INPUT">
