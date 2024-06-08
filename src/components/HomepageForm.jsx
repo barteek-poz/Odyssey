@@ -53,15 +53,16 @@ const HomepageForm = () => {
         event.preventDefault();
         addTravelHandler();
       }}
-      className="ADD-FORM flex flex-col mt-16">
-      <h1 className="xl:text-xl uppercase mb-4">Plan your next adventure</h1>
+      className="ADD-FORM flex flex-col items-center lg:items-start mt-16">
+      <h1 className="text-xl uppercase mb-4">Plan your next adventure</h1>
+      <div className="INPUTS w-full flex flex-col sm:flex-row lg:flex-col items-center sm:items-end lg:items-start justify-center gap-2">
       <SearchInput
         label="Destination"
         placeholder="Type your destination"
         setFormError={setFormError}
       />
-      <div className="INPUT-BOX flex flex-col mb-3">
-        <label htmlFor="date-input" className="text-sm px-1 mt-4">
+      <div className="DATEPICKER flex flex-col mb-3 sm:mb-0 lg:mb-3">
+        <label htmlFor="date-input" className="px-1 pb-1 mt-4">
           Date
         </label>
         <HomepageDatePicker
@@ -76,6 +77,8 @@ const HomepageForm = () => {
         className={`BUTTON border border-black rounded-lg mt-4 w-24 h-8 cursor-pointer hover:bg-black hover:text-white transition-colors duration-300`}>
         Create
       </button>
+      </div>
+     
     </form>
   );
 };

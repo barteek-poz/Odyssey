@@ -29,18 +29,18 @@ const Homepage = () => {
   }, [screenWidth]);
   
   return (
-    <section className="HOMEPAGE w-full h-full flex">
-      <div className="SEARCH-CONTAINER xl:w-1/2 px-10 py-5">
-        <header className="HEADER">
-          <img className="xl:w-32" src={LOGO} alt="odyssey-logo" />
+    <section className="HOMEPAGE w-full h-full flex flex-col lg:flex-row">
+      <div className="SEARCH-CONTAINER xl:w-1/2 h-full px-10 py-5">
+        <header className="HEADER ">
+          <img className="w-52 lg:w-32 mx-auto lg:mx-0" src={LOGO} alt="odyssey-logo" />
         </header>
         <HomepageForm />
         <section className="TRAVELS-SECTION mt-16">
-          <h2 className="xl:text-lg uppercase mt-10 mb-5">
+          <h2 className="text-lg uppercase mt-10 mb-5 text-center sm:text-start">
             Your recent travels
           </h2>
-          <div className="flex items-center">
-            <div className="TRAVELS-BOX flex items-center gap-14">
+          <div className="flex flex-col sm:flex-row gap-10 items-center">
+            <div className="TRAVELS-BOX flex items-center gap-3 lg:gap-14">
               {sortedTravels.slice(0, travelsToDisplay)?.map((travel) => {
                 return (
                   <TravelSmall
@@ -64,9 +64,9 @@ const Homepage = () => {
           </div>
         </section>
       </div>
-      <div className="MAP-CONTAINER w-1/2">
+      {screenWidth < 1024 ? "" :<div className="MAP-CONTAINER w-1/2 h-full">
         <Map allTravels={loaderTravels} scrollZoom={true} />
-      </div>
+      </div>}
     </section>
   );
 };
