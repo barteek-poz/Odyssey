@@ -38,7 +38,7 @@ const SearchInput = ({ label, placeholder, setFormError }) => {
   };
   return (
     <div className="INPUT-BOX flex flex-col">
-      <label htmlFor="search-input" className="text-sm px-1 pb-1">
+      <label htmlFor="search-input" className=" px-1 pb-1">
         {label}
       </label>
       <input
@@ -50,7 +50,7 @@ const SearchInput = ({ label, placeholder, setFormError }) => {
         id="search-input"
         name="search-input"
         placeholder={placeholder}
-        className="SEARCH-INPUT border border-black rounded-lg w-1/2 h-8 px-1.5 outline-1 outline-outlineColor placeholder-placeholderColor"
+        className="SEARCH-INPUT border border-black rounded-lg w-[264px] h-8 px-1.5 outline-1 outline-outlineColor placeholder-placeholderColor"
       />
       {searchList?.length > 0 && (
         <ul className="SEARCH-LIST flex flex-col gap-1 p-2 ">
