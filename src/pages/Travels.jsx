@@ -1,9 +1,7 @@
-import { useContext, useEffect } from "react";
 import Map from "../components/Map";
 import Navigation from "../components/Navigation";
 import TravelBig from "../components/TravelBig";
 import { useLoaderData } from "react-router-dom";
-import { SearchLocationContext } from "../context/SearchLocationContext";
 import sortTravels from "../helpers/sortTravels";
 
 const Travels = () => {
@@ -15,8 +13,8 @@ const Travels = () => {
       <div className="MAP-CONTAINER w-full h-96">
         <Map allTravels={loaderTravels} />
       </div>
-      <h1 className="sm:text-xl uppercase p-8 ml-8">Your travels</h1>
-      <div className="TRAVELS-LIST mx-16 flex flex-wrap gap-8 ">
+      <h1 className="text-xl uppercase my-8 mx-8 sm:mx-16 text-center sm:text-start">Your travels</h1>
+      <div className="TRAVELS-LIST mx-8 sm:mx-16 grid grid-cols-1 2xl:grid-cols-2 gap-4 ">
         {sortedTravels?.map((travel) => {
           return (
             <TravelBig

@@ -8,38 +8,37 @@ import { useContext, useEffect, useState } from "react";
 import { homepageTravels } from "../helpers/homepageTravels";
 import { SearchLocationContext } from "../context/SearchLocationContext";
 import sortTravels from "../helpers/sortTravels";
+import useScreenWidth from "../hooks/useScreenWidth";
 
 const Homepage = () => {
   const [travelsToDisplay, setTravelsToDisplay] = useState(() => {
     return homepageTravels(window.innerWidth);
   });
-  const [screenWidth, setScreenWidth] = useState(window.innerWidth);
+
   const loaderTravels = useLoaderData();
   const sortedTravels = sortTravels(loaderTravels);
   const ctx = useContext(SearchLocationContext);
+  const { screenWidth } = useScreenWidth();
   useEffect(() => {
-    const handleWindowResize = () => {
-      setTravelsToDisplay(homepageTravels(window.innerWidth));
-      setScreenWidth(window.innerWidth);
-    };
-    window.addEventListener("resize", handleWindowResize);
-    return () => {
-      window.removeEventListener("resize", handleWindowResize);
-    };
+    setTravelsToDisplay(homepageTravels(window.innerWidth));
   }, [screenWidth]);
-  
+
   return (
     <section className="HOMEPAGE w-full h-full flex flex-col lg:flex-row">
       <div className="SEARCH-CONTAINER xl:w-1/2 h-full px-10 py-5">
         <header className="HEADER ">
-          <img className="w-52 lg:w-32 mx-auto lg:mx-0" src={LOGO} alt="odyssey-logo" />
+          <img
+            className="w-52 lg:w-32 mx-auto lg:mx-0"
+            src={LOGO}
+            alt="odyssey-logo"
+          />
         </header>
         <HomepageForm />
         <section className="TRAVELS-SECTION mt-16">
           <h2 className="text-lg uppercase mt-10 mb-5 text-center sm:text-start">
             Your recent travels
           </h2>
-          <div className="flex flex-col sm:flex-row gap-10 items-center">
+          <div className="flex flex-col sm:flex-row gap-8 items-center">
             <div className="TRAVELS-BOX flex items-center gap-3 lg:gap-14">
               {sortedTravels.slice(0, travelsToDisplay)?.map((travel) => {
                 return (
@@ -64,9 +63,13 @@ const Homepage = () => {
           </div>
         </section>
       </div>
-      {screenWidth < 1024 ? "" :<div className="MAP-CONTAINER w-1/2 h-full">
-        <Map allTravels={loaderTravels} scrollZoom={true} />
-      </div>}
+      {screenWidth < 1024 ? (
+        ""
+      ) : (
+        <div className="MAP-CONTAINER w-1/2 h-full">
+          <Map allTravels={loaderTravels} scrollZoom={true} />
+        </div>
+      )}
     </section>
   );
 };

@@ -1,7 +1,7 @@
 export const homepageTravels = (windowWidth) => {
   if (windowWidth > 2350) {
     return 4;
-  } else if (windowWidth < 2350 && windowWidth > 1650) {
+  } else if (windowWidth < 2350 && windowWidth >= 1650) {
     return 3;
   } else if (windowWidth < 1650 && windowWidth > 768  ) {
     return 2;
