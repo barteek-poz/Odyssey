@@ -1,8 +1,8 @@
 import arrowCircle from "../assets/arrow-circle.svg";
 const ButtonRound = ({size, onBtnClick}) => {
   const btnSize= {
-    big: 'sm:w-10 sm:h-10', 
-    small: 'sm:w-7 sm:h-7'
+    big: 'w-10 h-10', 
+    small: 'w-7 h-7'
   }
   return (
     <button onClick={onBtnClick}
