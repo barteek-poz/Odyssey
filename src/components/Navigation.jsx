@@ -21,10 +21,9 @@ const Navigation = () => {
       setMenuOpen(false)
     }
   }, [screenWidth]);
-  console.log(screenWidth);
   return (
     <nav className="NAVIGATION fixed sm:relative w-full z-10 top-0 bg-white flex items-center justify-between py-4 ">
-      <Link to="/" className="LOGO ml-4 sm:p-0 ml-10" onClick={ctx.clearContext}>
+      <Link to="/" className="LOGO sm:p-0 ml-10" onClick={ctx.clearContext}>
         <img src={LOGO} alt="odyssey-logo" />
       </Link>
       {menuOpen ? (

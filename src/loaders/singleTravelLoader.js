@@ -8,7 +8,6 @@ export const singleTravelLoader = async (params) => {
 
   if (docSnap.exists()) {
     travel = docSnap.data();
-    console.log('ERROR HANDLER');
   } else {
     console.log("No such document!");
   }
