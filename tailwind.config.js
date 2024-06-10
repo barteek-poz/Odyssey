@@ -10,15 +10,17 @@ export default {
         food: "#fb923c",
         transport: "#10b981",
         accomodation: "#f43f5e",
-        navBackground: "rgba(255, 255, 255, 0.9)",
+        navBackground: "rgba(255, 255, 255, 0.95)",
       },
       minWidth: {
         400: "400px",
       },
       maxWidth: {
+        400: '400px',
         1500: "1500px",
       },
       width: {
+        400: '400px',
         600: "600px",
       },
     },

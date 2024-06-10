@@ -7,8 +7,8 @@ const PieChartForm = () => {
   const { expenses } = useLoaderData();
   const [currentExpenses, setCurrentExpenses] = useState(expenses);
   return (
-    <div className="CHART-BOX flex justify-center  px-20">
-      <div className="CHART lg:w-600 lg:h-600">
+    <div className="CHART-BOX flex flex-col lg:flex-row justify-center  lg:px-20">
+      <div className="CHART mx-auto w-80 lg:m-0 lg:w-600 ">
         <PieChart currentExpenses={currentExpenses} />
       </div>
       <div className="CHART-INFO">

@@ -32,7 +32,7 @@ const SelectBar = ({
   };
   return (
     <div className="flex items-center">
-      {label && <label className="text-placeholderColor pr-9">{label}</label>}
+      {label && <label className="text-placeholderColor pr-6">{label}</label>}
       <Select
         onChange={(selectValue) => {
           selectHandler(selectValue);
@@ -42,6 +42,7 @@ const SelectBar = ({
         placeholder={placeholder}
         status={blurError ? "error" : ""}
         options={options}
+        className="w-28"
       />
     </div>
   );
