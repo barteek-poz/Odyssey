@@ -19,9 +19,8 @@ const TravelDetails = () => {
         <Map singleTravelLocation={loaderData.geolocation} scrollZoom={false} />
       </div>
       <CenterComponent>
-        <div className="TRAVEL-DATA flex flex-col justify-center gap-10 ">
-          <div className="flex justify-center">
-            <div className="LEFT-COLUM w-1/2 py-10 px-10 flex flex-col gap-8">
+          <div className="TRAVEL-DATA flex flex-col lg:flex-row justify-center">
+            <div className="LEFT-COLUM w-full lg:w-1/2 lg:py-10 pt-10 lg:px-10  flex flex-col items-center lg:items-start gap-8">
               <div className="flex uppercase">
                 <h1 className="underline uppercase">Location:</h1>
                 <span className="pl-4">{loaderData.location}</span>
@@ -33,13 +32,12 @@ const TravelDetails = () => {
               <AccomodationDetails />
               <Schedule />
             </div>
-            <div className="RIGHT-COLUMN w-1/2 py-10 px-10 flex flex-col items-end gap-8">
+            <div className="RIGHT-COLUMN lg:w-1/2 py-10 lg:px-10 lg:ml-0 mb-8 lg:mb-0 flex flex-col items-center lg:items-end gap-8">
               <TransportDetails />
             </div>
           </div>
           <PieChartForm />
         <ModalComponent />
-        </div>
       </CenterComponent>
     </section>
   );

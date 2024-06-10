@@ -44,7 +44,7 @@ const TransportDetails = () => {
   };
 
   return (
-    <div className="TRANSPORT FORM flex flex-col gap-4">
+    <div className="TRANSPORT FORM flex flex-col gap-4 mr-4 md:mr-0 md:ml-8">
       <span className="uppercase underline">Transport</span>
       <span className="underline">To {location}:</span>
       <TransportForm
@@ -52,14 +52,14 @@ const TransportDetails = () => {
         transportInfo={transport?.to}
         updateTransportDataHandler={updateTransportDataHandler}
       />
-      ADD ANOTHER ROUTE
+    
       <span className="underline mt-4">From {location}:</span>
       <TransportForm
         transportDirection="from"
         transportInfo={transport?.from}
         updateTransportDataHandler={updateTransportDataHandler}
       />
-      ADD ANOTHER ROUTE
+      
     </div>
   );
 };

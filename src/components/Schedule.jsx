@@ -79,7 +79,7 @@ const Schedule = () => {
   };
 
   return (
-    <div className="SCHEDULE flex flex-col items-start">
+    <div className="SCHEDULE flex flex-col items-start mr-11 lg:mr-0">
       <div className="SCHEDULE-HEADER flex flex-col gap-4">
         <span className="uppercase underline">Schedule</span>
         <span className="mb-4">Here you can write your travel plans:</span>

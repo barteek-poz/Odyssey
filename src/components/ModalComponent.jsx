@@ -29,7 +29,7 @@ const ModalComponent = () => {
   };
 
   return (
-    <div className="m-auto">
+    <div className="flex justify-center mt-8 lg:mt-0">
       <button
         className="DELETE-TRAVEL-BTN text-red-500 text-center uppercase border border-red-500 p-1 px-2 rounded-lg mb-8 duration-300 hover:bg-red-500 hover:text-white"
         onClick={showModal}>

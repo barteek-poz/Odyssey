@@ -48,7 +48,7 @@ const AddExpenseForm = ({
 
   return (
     <>
-      <div className="ADD-EXPENSE-FORM flex justify-between items-center gap-2">
+      <div className="ADD-EXPENSE-FORM flex flex-col md:flex-row justify-between items-center gap-2">
         <SelectBar
           placeholder="Category"
           options={[
@@ -71,10 +71,17 @@ const AddExpenseForm = ({
           setValue={setPriceValue}
           setFormError={setFormError}
         />
-        <CheckButton onBtnClick={addExpenseHandler} />
-        <DeleteButton onBtnClick={formDisplayHandler} />
+        <div className="flex gap-1">
+          <CheckButton onBtnClick={addExpenseHandler} />
+          <DeleteButton onBtnClick={formDisplayHandler} />
+        </div>
       </div>
-      <p className={formError ? `FORM-ERROR text-red-600` :`FORM-ERROR invisible` }>Please, fill out all fields</p>
+      <p
+        className={
+          formError ? `FORM-ERROR text-red-600` : `FORM-ERROR invisible`
+        }>
+        Please, fill out all fields
+      </p>
     </>
   );
 };

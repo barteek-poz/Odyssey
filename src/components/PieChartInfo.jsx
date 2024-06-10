@@ -9,7 +9,7 @@ import { db } from "../config/firestore";
 const PieChartInfo = ({ currentExpenses, setCurrentExpenses }) => {
   const [totalSum, setTotalSum] = useState(() => calcExpenses(currentExpenses));
   const currentTravel = doc(db, "travels", "jwY5m9wy2XdpqhLrNxeu");
-  
+
   const deleteExpenseHandler = async (id) => {
     const newExpenses = currentExpenses?.filter((expense) => expense.id !== id);
     await updateDoc(currentTravel, {
@@ -19,7 +19,7 @@ const PieChartInfo = ({ currentExpenses, setCurrentExpenses }) => {
     setTotalSum(() => calcExpenses(newExpenses));
   };
   return (
-    <div className="CHART-INFO flex flex-col min-w-400">
+    <div className="CHART-INFO flex flex-col w-80 md:w-400 mx-auto lg:m-0 my-10">
       <span className="uppercase underline">Expenses</span>
       <div className="border-b border-b-black mb-1">
         <ul className="CHART-LIST flex flex-col gap-2 mt-4 mb-2">

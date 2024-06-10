@@ -18,7 +18,7 @@ const AccomodationDetails = () => {
   };
   
   return (
-    <div className="ACCOMODATION FORM flex flex-col gap-4 ">
+    <div className="ACCOMODATION FORM flex flex-col gap-4 pr-6 md:pr-0 md:pl-7  lg:pl-0">
       <span className="uppercase underline">Accomodation</span>
       <DetailsInput
         label="Place"
