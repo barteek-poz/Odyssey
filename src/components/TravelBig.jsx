@@ -25,7 +25,7 @@ const TravelBig = ({
       <Link
         to={`/travels/${id}`}
         className="TRAVEL-IMG-BIG min-w-64 sm:min-w-72 h-44  overflow-hidden duration-300 hover:scale-105">
-        <img src={img} alt="city-photo" className="sm:w-full w-72 h-full rounded-lg" />
+        <img src={img} alt="city-photo" className=" w-72 h-full rounded-lg" />
       </Link>
       <div className="TRAVEL-INFO py-2 sm:py-0 sm:p-2 sm:pl-6 flex flex-col gap-2 text-sm justify-center">
         <h2 className="font-bold uppercase text-lg">{location}</h2>
