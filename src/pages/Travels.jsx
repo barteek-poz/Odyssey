@@ -3,17 +3,29 @@ import Navigation from "../components/Navigation";
 import TravelBig from "../components/TravelBig";
 import { useLoaderData } from "react-router-dom";
 import sortTravels from "../helpers/sortTravels";
+import MapButton from "../components/MapButton";
+import useScreenWidth from "../hooks/useScreenWidth";
+import { useState } from "react";
 
 const Travels = () => {
+  const [isMapOpen, setIsMapOpen] = useState(false)
   const loaderTravels = useLoaderData();
-  const sortedTravels = sortTravels(loaderTravels)
+  const sortedTravels = sortTravels(loaderTravels);
+  const {screenWidth} = useScreenWidth()
+
+  const mapHandler = () => {
+    setIsMapOpen(prevState => !prevState)
+  }
+const mapContainerStyles = isMapOpen ? "MAP-CONTAINER w-full h-full" : "MAP-CONTAINER sm:w-full sm:h-96"
   return (
-    <section className="TRAVELS w-full h-full">
+    <section className="TRAVELS relative w-full h-full mt-14 sm:mt-0">
       <Navigation />
-      <div className="MAP-CONTAINER w-full h-96">
+      <div className={mapContainerStyles}>
         <Map allTravels={loaderTravels} />
       </div>
-      <h1 className="text-xl uppercase my-8 mx-8 sm:mx-16 text-center sm:text-start">Your travels</h1>
+      {isMapOpen ? '' : <><h1 className="text-xl uppercase my-8 mx-8 sm:mx-16 text-center sm:text-start">
+        Your travels
+      </h1>
       <div className="TRAVELS-LIST mx-8 sm:mx-16 grid grid-cols-1 2xl:grid-cols-2 gap-4 ">
         {sortedTravels?.map((travel) => {
           return (
@@ -31,7 +43,8 @@ const Travels = () => {
             />
           );
         })}
-      </div>
+      </div></>}
+      {screenWidth <= 640 && <MapButton onMapHandler={mapHandler} isMapOpen={isMapOpen}/>}
     </section>
   );
 };
