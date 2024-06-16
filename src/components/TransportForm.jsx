@@ -6,10 +6,9 @@ const TransportForm = ({
   transportInfo,
   updateTransportDataHandler,
 }) => {
-  
-const transportInputHandler = (category, inputValue) => {
-  updateTransportDataHandler(transportDirection, category, inputValue)
-}
+  const transportInputHandler = (category, inputValue) => {
+    updateTransportDataHandler(transportDirection, category, inputValue);
+  };
 
   return (
     <div className="flex flex-col gap-4">
@@ -30,6 +29,7 @@ const transportInputHandler = (category, inputValue) => {
         ]}
         category="type"
         setCategoryValue={transportInputHandler}
+        isCheckIcon={true}
       />
       <DetailsInput
         initialValue={transportInfo?.ticketNumber}

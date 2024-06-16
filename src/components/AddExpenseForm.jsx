@@ -59,6 +59,7 @@ const AddExpenseForm = ({
           ]}
           setCategoryValue={setCategoryValue}
           setFormError={setFormError}
+          isCheckIcon={false}
         />
         <ExpenseInput
           placeholder="Title"
