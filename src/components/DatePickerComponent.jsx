@@ -48,7 +48,7 @@ const DatePickerComponent = () => {
           />
         )}
       </Space>
-     {showCheck&& <img src={CHECK_ICON} />}
+      <img src={CHECK_ICON} className={showCheck ? "visible" : "invisible"} />
     </div>
   );
 };
