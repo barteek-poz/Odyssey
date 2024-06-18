@@ -8,6 +8,7 @@ import TransportDetails from "../components/TransportDetails";
 import CenterComponent from "../components/CenterComponent";
 import PieChartForm from "../components/PieChartForm";
 import ModalComponent from "../components/ModalComponent";
+import PDFButton from "../components/PDFButton";
 
 const TravelDetails = () => {
   const loaderData = useLoaderData();
@@ -37,7 +38,10 @@ const TravelDetails = () => {
           </div>
         </div>
         <PieChartForm />
-        <ModalComponent />
+        <div className="flex flex-col lg:flex-row gap-4 items-center justify-center lg:mt-10 pb-8">
+          <PDFButton travelData={loaderData} />
+          <ModalComponent />
+        </div>
       </CenterComponent>
     </section>
   );

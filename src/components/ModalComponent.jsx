@@ -29,9 +29,9 @@ const ModalComponent = () => {
   };
 
   return (
-    <div className="flex justify-center mt-8 lg:mt-0">
+    <div className="flex justify-center ">
       <button
-        className="DELETE-TRAVEL-BTN text-red-500 text-center uppercase border border-red-500 p-1 px-2 rounded-lg mb-8 duration-300 hover:bg-red-500 hover:text-white"
+        className="DELETE-TRAVEL-BTN w-44 text-red-500 text-center uppercase border border-red-500 p-1 px-2 rounded-lg duration-300 hover:bg-red-500 hover:text-white"
         onClick={showModal}>
         Delete this travel
       </button>
