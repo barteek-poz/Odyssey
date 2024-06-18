@@ -1,6 +1,5 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-import App from "./App.jsx";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Homepage from "./pages/Homepage.jsx";
 import Travels from "./pages/Travels.jsx";
@@ -9,6 +8,7 @@ import { allTravelsLoader } from "./loaders/allTravelsLoader.js";
 import TravelDetails from "./pages/TravelDetails.jsx";
 import { singleTravelLoader } from "./loaders/singleTravelLoader.js";
 import ErrorPage from "./pages/ErrorPage.jsx";
+import PDFDocument from "./components/PDFDocument.jsx";
 
 
 const router = createBrowserRouter([
@@ -28,6 +28,14 @@ const router = createBrowserRouter([
   {
     path: "/travels/:id",
     element: <TravelDetails />,
+    loader: ({ params }) => {
+      return singleTravelLoader(params);
+    },
+    errorElement: <ErrorPage/>
+  },
+  {
+    path: "/travels/:id/pdf",
+    element: <PDFDocument/>,
     loader: ({ params }) => {
       return singleTravelLoader(params);
     },
