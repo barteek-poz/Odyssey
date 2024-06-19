@@ -10,6 +10,7 @@ import PieChartForm from "../components/PieChartForm";
 import ModalComponent from "../components/ModalComponent";
 import PDFButton from "../components/PDFButton";
 
+
 const TravelDetails = () => {
   const loaderData = useLoaderData();
 
