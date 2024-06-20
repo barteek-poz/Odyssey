@@ -13,7 +13,6 @@ import PDFButton from "../components/PDFButton";
 
 const TravelDetails = () => {
   const loaderData = useLoaderData();
-
   return (
     <section className="TRAVEL-DETAILS w-full h-full mt-14 sm:mt-0">
       <Navigation />
