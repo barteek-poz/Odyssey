@@ -13,6 +13,7 @@ const PieChart = ({ currentExpenses }) => {
     accomodationExpenses,
     souvenirsExpenses,
   } = calcExpenses(currentExpenses);
+  console.log(calcExpenses());
   const legendPosition = screenWidth >= 1024 ? 'right' : 'bottom'
   const options = {
     plugins: {

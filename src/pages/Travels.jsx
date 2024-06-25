@@ -26,7 +26,7 @@ const mapContainerStyles = isMapOpen ? "MAP-CONTAINER w-full h-full" : "MAP-CONT
       {isMapOpen ? '' : <><h1 className="text-xl uppercase my-8 mx-8 sm:mx-16 text-center sm:text-start">
         Your travels
       </h1>
-      <div className="TRAVELS-LIST mx-8 sm:mx-16 grid grid-cols-1 2xl:grid-cols-2 gap-4 ">
+      <div className="TRAVELS-LIST mx-8 sm:mx-16 grid grid-cols-1 2xl:grid-cols-2 gap-4 pb-10">
         {sortedTravels?.map((travel) => {
           return (
             <TravelBig
