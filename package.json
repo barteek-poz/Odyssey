@@ -12,6 +12,7 @@
   },
   "dependencies": {
     "@react-pdf/renderer": "^3.4.4",
+    "@testing-library/jest-dom": "github:testing-library/jest-dom",
     "@testing-library/react": "^16.0.0",
     "antd": "^5.16.5",
     "chart.js": "^4.4.3",
@@ -19,6 +20,7 @@
     "firebase": "^10.11.1",
     "instead": "^1.0.3",
     "jest": "^29.7.0",
+    "jsdom": "^24.1.0",
     "leaflet": "^1.9.4",
     "react": "^18.2.0",
     "react-chartjs-2": "^5.2.0",
