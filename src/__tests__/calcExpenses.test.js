@@ -1,4 +1,3 @@
-import { expect, test } from "vitest";
 import calcExpenses from "../helpers/calcExpenses";
 
 const expenses = [
@@ -27,11 +26,13 @@ const expectedEmptyExpenses = {
   accomodationExpenses: 0,
   souvenirsExpenses: 0,
 };
+describe('calcExpenses' ,() => {
+  it("calcExpenses sums all expenses categories", () => {
+    expect(calcExpenses(expenses)).toEqual(expectedExpenses);
+  });
+  
+  it("calcExpenses when there is no expenses", () => {
+    expect(calcExpenses(emptyExpenses)).toEqual(expectedEmptyExpenses);
+  });
+})
 
-test("calcExpenses sums all expenses categories", () => {
-  expect(calcExpenses(expenses)).toEqual(expectedExpenses);
-});
-
-test("calcExpenses when there is no expenses", () => {
-  expect(calcExpenses(emptyExpenses)).toEqual(expectedEmptyExpenses);
-});

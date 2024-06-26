@@ -1,4 +1,3 @@
-import { expect, test} from "vitest";
 import { dateFormat } from "../helpers/dateFormat";
 
 test('dateFormat changes date format', () => {
