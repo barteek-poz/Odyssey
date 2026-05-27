@@ -45,8 +45,9 @@ const Homepage = () => {
                   <TravelSmall
                     key={travel.id}
                     img={travel.img}
-                    location={travel.location}
-                    date={travel.date}
+                    location={travel.city}
+                    startDate={travel.startDate}
+                    endDate={travel.endDate}
                     id={travel.id}
                   />
                 );

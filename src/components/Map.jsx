@@ -15,17 +15,18 @@ const Map = ({ allTravels, singleTravelLocation, scrollZoom }) => {
     iconSize: [50, 50],
     iconAnchor: [25, 50],
   });
- 
+
   return (
     <div className="MAP-CONTAINER w-full h-full">
       <MapContainer
         scrollWheelZoom={scrollZoom}
         center={
           singleTravelLocation
-            ? [singleTravelLocation._lat, singleTravelLocation._long]
+            ? [singleTravelLocation.latitude, singleTravelLocation.longitude]
             : [52.406376, 16.925167]
         }
-        zoom={singleTravelLocation ? 10 : 5}>
+        zoom={singleTravelLocation ? 10 : 5}
+        >
         <TileLayer
           attribution='&copy; <a href="https://www.mapbox.com/about/maps/">Mapbox</a> ©
       <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
@@ -36,7 +37,7 @@ const Map = ({ allTravels, singleTravelLocation, scrollZoom }) => {
         {ctx.location && (
           <Marker
             key={ctx.location.id}
-            position={[ctx.location.lat, ctx.location.lon]}
+            position={[ctx.location.latitude, ctx.location.longitude]}
             icon={pinIcon}></Marker>
         )}
         {allTravels &&
@@ -44,15 +45,15 @@ const Map = ({ allTravels, singleTravelLocation, scrollZoom }) => {
             return (
               <Marker
                 key={travel.id}
-                position={[travel.geolocation._lat, travel.geolocation._long]}
+                position={[travel.latitude, travel.longitude]}
                 icon={pinIcon}>
                 <Popup>
                   <div className="flex flex-col gap-0.5 p-0">
                     <span className="uppercase font-bold">
-                      {travel.location}
+                      {travel.city}
                     </span>
                     <span className="text-xs my-0">
-                      {dateFormat(travel.date)}
+                      {travel.startDate} - {travel.endDate}
                     </span>
                     <Link to={`/travels/${travel.id}`} onClick={ctx.clearContext}>See details...</Link>
                   </div>
