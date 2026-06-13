@@ -8,17 +8,16 @@ import { useState } from "react";
 import CHECK_ICON from "../assets/check.svg";
 
 const DatePickerComponent = () => {
-  const { date } = useLoaderData();
+  const { startDate, endDate } = useLoaderData();
+  console.log(startDate)
   const [dates, setDates] = useState({
-    firstDate: date[0].slice(0, 10),
-    secondDate: date[1].slice(0, 10),
+    startDate, endDate
   });
   const [showCheck, setShowCheck] = useState(false);
   const params = useParams();
   const currentTravel = doc(db, "travels", params.id);
 
   const onCalendarChange = async (dates, dateStrings) => {
-    console.log("test");
     if (
       dateStrings[0].trim().length !== 0 &&
       dateStrings[1].trim().length !== 0

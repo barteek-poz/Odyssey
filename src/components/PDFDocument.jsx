@@ -68,13 +68,16 @@ const styles = StyleSheet.create({
 });
 
 const PDFDocument = ({ travelData }) => {
+  console.log(travelData);
   return (
     <Document>
       <Page size="A4" style={styles.page}>
         <View style={styles.header}>
           <Image src={LOGO} style={styles.logo}></Image>
           <Text style={styles.h1}>{travelData.location}</Text>
-          <Text>{dateFormat(travelData.date)}</Text>
+          <Text>
+            {travelData.startDate} - {travelData.endDate}
+          </Text>
         </View>
         <View style={styles.columns}>
           <View style={styles.left}>
@@ -169,12 +172,12 @@ const PDFDocument = ({ travelData }) => {
           </View>
           <View style={styles.right}>
             <Text style={styles.h2}>Expenses</Text>
-            {travelData.expenses.length > 0 ? (
-              travelData.expenses.map((expense) => {
+            {travelData.expenseList.length > 0 ? (
+              travelData.expenseList.map((expense) => {
                 return (
                   <Text key={expense.id}>
                     {expense.title[0].toUpperCase() + expense.title.slice(1)}:{" "}
-                    {expense.price} €{" "}
+                    {expense.amount} {expense.currency}
                   </Text>
                 );
               })
@@ -187,8 +190,8 @@ const PDFDocument = ({ travelData }) => {
             )}
             <Text style={styles.expensesSum}>
               Total:{" "}
-              {travelData.expenses.length > 0
-                ? travelData.expenses.reduce((acc, currVal) => {
+              {travelData.expenseList.length > 0
+                ? travelData.expenseList.reduce((acc, currVal) => {
                     return acc + Number(currVal.price);
                   }, 0)
                 : 0}

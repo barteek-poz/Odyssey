@@ -32,9 +32,10 @@ const mapContainerStyles = isMapOpen ? "MAP-CONTAINER w-full h-full" : "MAP-CONT
             <TravelBig
               key={travel.id}
               id={travel.id}
-              img={travel.img}
+              img={travel.imageUrl}
               location={travel.location}
-              date={travel.date}
+              startDate={travel.startDate}
+              endDate={travel.endDate}
               from={travel.transport?.to.cityDeparture}
               to={travel.transport?.from.cityArrival}
               transportTo={travel.transport?.to.type}

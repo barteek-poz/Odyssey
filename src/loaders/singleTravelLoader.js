@@ -2,14 +2,15 @@ import { doc, getDoc } from "firebase/firestore";
 import { db } from "../config/firestore";
 
 export const singleTravelLoader = async (params) => {
-  let travel;
-  const docRef = doc(db, "travels", params.id);
-  const docSnap = await getDoc(docRef);
-
-  if (docSnap.exists()) {
-    travel = docSnap.data();
-  } else {
-    console.log("No such document!");
+ try{
+  const travelFetch = await fetch(`http://localhost:8080/api/travels/${params.id}`);
+  if(!travelFetch.ok) {
+    throw Error("Travel fetch error")
   }
-  return travel;
+  const travelData = await travelFetch.json()
+  return travelData
+}
+  catch(error){
+    console.log(error)
+  }
 };

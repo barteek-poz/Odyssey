@@ -29,7 +29,7 @@ const PieChartInfo = ({ currentExpenses, setCurrentExpenses }) => {
               id={expense.id}
               category={expense.category}
               title={expense.title}
-              price={expense.price}
+              price={expense.amount}
               deleteExpenseHandler={deleteExpenseHandler}
             />
           ))}

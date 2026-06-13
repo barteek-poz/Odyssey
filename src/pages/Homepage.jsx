@@ -19,6 +19,7 @@ const Homepage = () => {
   const sortedTravels = sortTravels(loaderTravels);
   const ctx = useContext(SearchLocationContext);
   const { screenWidth } = useScreenWidth();
+  console.log(sortedTravels)
   useEffect(() => {
     setTravelsToDisplay(homepageTravels(window.innerWidth));
   }, [screenWidth]);
@@ -44,7 +45,7 @@ const Homepage = () => {
                 return (
                   <TravelSmall
                     key={travel.id}
-                    img={travel.img}
+                    img={travel.imageUrl}
                     location={travel.city}
                     startDate={travel.startDate}
                     endDate={travel.endDate}

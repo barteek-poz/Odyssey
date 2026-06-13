@@ -8,7 +8,8 @@ import useScreenWidth from "../hooks/useScreenWidth";
 const TravelBig = ({
   img,
   location,
-  date,
+  startDate,
+  endDate,
   from,
   to,
   id,
@@ -16,7 +17,6 @@ const TravelBig = ({
   transportFrom,
   accomodation,
 }) => {
-  const travelDate = dateFormat(date);
   const transportToImg = transportType(transportTo);
   const transportFromImg = transportType(transportFrom);
   const {screenWidth} = useScreenWidth();
@@ -29,7 +29,7 @@ const TravelBig = ({
       </Link>
       <div className="TRAVEL-INFO py-2 sm:py-0 sm:p-2 sm:pl-6 flex flex-col gap-2 text-sm justify-center">
         <h2 className="font-bold uppercase text-lg">{location}</h2>
-        <p>{travelDate}</p>
+        <p>{startDate} - {endDate}</p>
         {screenWidth >= 1024 && (
           <>
             <div className="TRANSPORT-INFO flex items-center ">

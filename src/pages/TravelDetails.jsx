@@ -28,7 +28,7 @@ const TravelDetails = () => {
             </div>
             <div className="flex items-center gap-4 uppercase">
               <span className="underline uppercase">Date:</span>
-              <DatePickerComponent />
+              
             </div>
             <AccomodationDetails />
             <Schedule />
