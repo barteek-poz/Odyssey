@@ -68,7 +68,6 @@ const styles = StyleSheet.create({
 });
 
 const PDFDocument = ({ travelData }) => {
-  console.log(travelData);
   return (
     <Document>
       <Page size="A4" style={styles.page}>

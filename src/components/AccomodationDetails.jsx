@@ -4,67 +4,66 @@ import { useState } from "react";
 import { doc, updateDoc } from "firebase/firestore";
 import { db } from "../config/firestore";
 
-const AccomodationDetails = () => {
-  const { accomodation } = useLoaderData();
-  const [accomodationData, setAccomodationData] = useState(accomodation);
+const accommodationDetails = () => {
+  const { accommodationList } = useLoaderData();
+  const [accommodationData, setaccommodationData] = useState(accommodationList[0]);
   const params = useParams();
   const currentTravel = doc(db, "travels", params.id);
 
-  const updateAccomodationDataHandler = async (category, inputValue) => {
+  const updateaccommodationDataHandler = async (category, inputValue) => {
     await updateDoc(currentTravel, {
-      accomodation: { ...accomodationData, [category]: inputValue },
+      accommodation: { ...accommodationData, [category]: inputValue },
     });
-    setAccomodationData({ ...accomodationData, [category]: inputValue });
+    setaccommodationData({ ...accommodationData, [category]: inputValue });
   };
-  
+
   return (
-    <div className="ACCOMODATION FORM flex flex-col gap-4 pr-6 md:pr-0 md:pl-7  lg:pl-0">
-      <span className="uppercase underline">Accomodation</span>
+    <div className="accommodation FORM flex flex-col gap-4 pr-6 md:pr-0 md:pl-7  lg:pl-0">
+      <span className="uppercase underline">accommodation</span>
       <DetailsInput
         label="Place"
-        placeholder="Enter your accomodation place"
-        initialValue={accomodation?.place}
+        placeholder="Enter your accommodation place"
+        initialValue={accommodationData?.place}
         category="place"
-        updateDataHandler={updateAccomodationDataHandler}
+        updateDataHandler={updateaccommodationDataHandler}
       />
       <DetailsInput
         label="Reservation number"
         placeholder="Enter your reservation number"
-        initialValue={accomodation?.reservationNumber}
+        initialValue={accommodationData?.reservationNumber}
         category="reservationNumber"
-        updateDataHandler={updateAccomodationDataHandler}
+        updateDataHandler={updateaccommodationDataHandler}
       />
       <DetailsInput
         label="Room"
         placeholder="Enter your room type"
-        initialValue={accomodation?.room}
+        initialValue={accommodationData?.roomType}
         category="room"
-        updateDataHandler={updateAccomodationDataHandler}
+        updateDataHandler={updateaccommodationDataHandler}
       />
       <DetailsInput
         label="Check-in"
         placeholder="Enter your check-in time"
-        initialValue={accomodation?.checkIn}
+        initialValue={accommodationData?.accStart}
         category="checkIn"
-        type="time"
-        updateDataHandler={updateAccomodationDataHandler}
+        updateDataHandler={updateaccommodationDataHandler}
       />
       <DetailsInput
         label="Email"
         placeholder="Enter email adress"
-        initialValue={accomodation?.email}
+        initialValue={accommodationData?.email}
         category="email"
-        updateDataHandler={updateAccomodationDataHandler}
+        updateDataHandler={updateaccommodationDataHandler}
       />
       <DetailsInput
         label="Phone"
         placeholder="Enter contact number"
-        initialValue={accomodation?.phone}
+        initialValue={accommodationData?.phone}
         category="phone"
-        updateDataHandler={updateAccomodationDataHandler}
+        updateDataHandler={updateaccommodationDataHandler}
       />
     </div>
   );
 };
 
-export default AccomodationDetails;
+export default accommodationDetails;

@@ -1,5 +1,5 @@
 const calcExpenses = (expenses) => {
-  console.log(expenses)
+  
   if (expenses) {
     const foodExpenses = expenses
       .filter((expense) => expense.category === "FOOD")

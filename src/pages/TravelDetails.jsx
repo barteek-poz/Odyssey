@@ -13,6 +13,7 @@ import PDFButton from "../components/PDFButton";
 
 const TravelDetails = () => {
   const loaderData = useLoaderData();
+  
   return (
     <section className="TRAVEL-DETAILS w-full h-full mt-14 sm:mt-0">
       <Navigation />
@@ -24,11 +25,11 @@ const TravelDetails = () => {
           <div className="LEFT-COLUM w-full lg:w-1/2 lg:py-10 pt-10 lg:px-10  flex flex-col items-center lg:items-start gap-8">
             <div className="flex uppercase">
               <h1 className="underline uppercase">Location:</h1>
-              <span className="pl-4">{loaderData.location}</span>
+              <span className="pl-4">{loaderData.city}</span>
             </div>
             <div className="flex items-center gap-4 uppercase">
               <span className="underline uppercase">Date:</span>
-              
+              {loaderData.startDate} - {loaderData.endDate}
             </div>
             <AccomodationDetails />
             <Schedule />

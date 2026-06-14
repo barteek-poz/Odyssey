@@ -5,8 +5,9 @@ import { db } from "../config/firestore";
 import TransportForm from "./TransportForm";
 
 const TransportDetails = () => {
-  const { transport, location } = useLoaderData();
-  const [transportData, setTransportData] = useState(transport);
+  const { transportList, location } = useLoaderData();
+  console.log(transportList)
+  const [transportData, setTransportData] = useState(transportList);
   const params = useParams();
   const currentTravel = doc(db, "travels", params.id);
 
@@ -46,17 +47,17 @@ const TransportDetails = () => {
   return (
     <div className="TRANSPORT FORM flex flex-col gap-4 mr-4 md:mr-0 md:ml-8">
       <span className="uppercase underline">Transport</span>
-      <span className="underline">To {location}:</span>
+      <span className="underline">To {transportData[0].placeArrival}:</span>
       <TransportForm
         transportDirection="to"
-        transportInfo={transport?.to}
+        transportInfo={transportData[0].placeArrival}
         updateTransportDataHandler={updateTransportDataHandler}
       />
     
-      <span className="underline mt-4">From {location}:</span>
+      <span className="underline mt-4">From {transportData[1].placeDeparture}:</span>
       <TransportForm
         transportDirection="from"
-        transportInfo={transport?.from}
+        transportInfo={transportData[1].placeArrival}
         updateTransportDataHandler={updateTransportDataHandler}
       />
       
