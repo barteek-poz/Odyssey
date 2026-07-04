@@ -1,21 +1,24 @@
 import { useLoaderData, useParams } from "react-router-dom";
 import DetailsInput from "./DetailsInput";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { doc, updateDoc } from "firebase/firestore";
 import { db } from "../config/firestore";
+import useUpdateData from "../hooks/useUpdateData";
 
 const accommodationDetails = () => {
   const { accommodationList } = useLoaderData();
   const [accommodationData, setaccommodationData] = useState(accommodationList[0]);
   const params = useParams();
   const currentTravel = doc(db, "travels", params.id);
+  const {updateData, pending, error} = useUpdateData();
 
   const updateaccommodationDataHandler = async (category, inputValue) => {
-    await updateDoc(currentTravel, {
-      accommodation: { ...accommodationData, [category]: inputValue },
-    });
     setaccommodationData({ ...accommodationData, [category]: inputValue });
   };
+
+  useEffect(()=> {
+    updateData("http://localhost:8080/api/travels/1/accommodations/1", accommodationData)
+  },[accommodationData])
 
   return (
     <div className="accommodation FORM flex flex-col gap-4 pr-6 md:pr-0 md:pl-7  lg:pl-0">
@@ -38,7 +41,7 @@ const accommodationDetails = () => {
         label="Room"
         placeholder="Enter your room type"
         initialValue={accommodationData?.roomType}
-        category="room"
+        category="roomType"
         updateDataHandler={updateaccommodationDataHandler}
       />
       <DetailsInput
